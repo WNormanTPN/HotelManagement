@@ -15,9 +15,9 @@ namespace BUS
         {
             db = new Database();
         }
-        public void ThemHoaDon(string maHD, string maCTT, string maNV, string giamGia, string phuThu, string ngayThanhToan, string pttt)
+        public void ThemHoaDon(string maHD, string maCTT, string giamGia, string phuThu, string ngayThanhToan, string pttt)
         {
-            string query = string.Format("insert into HOADON values('{0}','{1}','{2}',{3},{4},'{5}',{6},0)", maHD, maCTT, maNV, giamGia, phuThu, ngayThanhToan, pttt);
+            string query = string.Format("insert into HOADON values('{0}','{1}',{2},{3},'{4}',{5},0)", maHD, maCTT, giamGia, phuThu, ngayThanhToan, pttt);
             db.ExecuteNonQuery(query);
         }
         public int SoLuongHD(string dateNow)

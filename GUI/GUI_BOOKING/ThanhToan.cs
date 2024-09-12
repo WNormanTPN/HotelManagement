@@ -431,7 +431,7 @@ namespace GUI.GUI_BOOKING
                 string GiamGia = txtGiamGia.Text.Replace("%", "");
                 string phuThu = CbPhuThu.SelectedItem.ToString().Replace("%", "");
                 string ngayThanhToan = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                hd.ThemHoaDon(maHD, maCTT, Program.nhanVien.MaNV, GiamGia, phuThu, ngayThanhToan, cbPTTT.SelectedIndex.ToString());
+                hd.ThemHoaDon(maHD, maCTT, GiamGia, phuThu, ngayThanhToan, cbPTTT.SelectedIndex.ToString());
                 #endregion
 
                 #region Sửa tình trạng xử lý của phiếu thuê

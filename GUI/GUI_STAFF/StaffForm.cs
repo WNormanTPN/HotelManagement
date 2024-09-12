@@ -66,7 +66,7 @@ namespace GUI.GUI_STAFF
                     chucvu = " Kê toán";
                 else
                     chucvu = "Bếp";
-                MessageBox.Show(dt.Rows[i][5].ToString().Split()[0]);
+
                 var ngaysinh = DateTime.Parse(dt.Rows[i][5].ToString().Split()[0]).ToString("dd/MM/yyyy");
                 var ngayvaolam = DateTime.Parse(dt.Rows[i][6].ToString().Split()[0]).ToString("dd/MM/yyyy");
                 var email = dt.Rows[i][7].ToString();

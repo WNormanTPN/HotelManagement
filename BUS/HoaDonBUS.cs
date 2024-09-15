@@ -115,7 +115,7 @@ namespace BUS
         }
         public DataTable getHoaDon(string maHD)
         {
-            string query = "select maHD, maCTT, tenNV, ngayThanhToan from HoaDon, NhanVien from HOADON INNER JOIN CHITIETTHUE ON HOADON.maCTT = CHITIETTHUE.maCTT\r\nINNER JOIN NHANVIEN ON CHITIETTHUE.maNV = NHANVIEN.maNV where maHD = '" + maHD + "'";
+            string query = "select maHD, HOADON.maCTT, tenNV, ngayThanhToan \r\nfrom HoaDon\r\nINNER JOIN CHITIETTHUE ON HOADON.maCTT = CHITIETTHUE.maCTT\r\nINNER JOIN NHANVIEN ON CHITIETTHUE.maNV = NHANVIEN.maNV \r\nwhere maHD = '" + maHD + "'";
             return db.getList(query);
         }
         public DataTable getThuePhong(string maHD)

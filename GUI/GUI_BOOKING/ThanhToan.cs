@@ -37,6 +37,7 @@ namespace GUI.GUI_BOOKING
             List<KhachHangDTO> listKH = kh.GetDSKH();
             var item = from ctt in listCTT
                        join kh in listKH on ctt.MaKH equals kh.MaKH
+                       where ctt.MaCTT == maCTT
                        select new
                        {
                            maKH = kh.MaKH,

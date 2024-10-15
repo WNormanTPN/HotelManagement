@@ -14,7 +14,7 @@ namespace DAO
         SqlConnection conn;
         SqlDataAdapter da;
         DataSet ds;
-        public string serverName = @"NORMAN\SQLEXPRESS";
+        public string serverName = @"LAPTOP-2V49VUAG\BEOTHAO";
         public string dbName = "QLKS";
         public Database()
         {

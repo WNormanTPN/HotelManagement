@@ -50,6 +50,7 @@ namespace GUI.GUI_SERVICE
             cboLoaiDV.ValueMember = "loaiDV";
             dtgvData.ClearSelection();
             this.ActiveControl = null;
+            HideAllSearchFields();
         }
         private void boolcontrols(bool iss)
         {
@@ -165,6 +166,7 @@ namespace GUI.GUI_SERVICE
             txttendv_search.Text = "";
             cbogiadv_search.Text = "";
             cboloaidv_search.Text = "";
+            comboBox1.SelectedIndex = 0;
             ListDichVu();
         }
 
@@ -437,5 +439,58 @@ namespace GUI.GUI_SERVICE
                 }
             }
         }
+
+       
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedSearchType = comboBox1.SelectedItem.ToString();
+
+            if (selectedSearchType == "Tìm kiếm theo mã")
+            {
+                ShowSearchByIdField();
+            }
+            else if (selectedSearchType == "Tìm kiếm khác")
+            {
+                ShowOtherSearchFields();
+            }
+
+            // Dọn sạch các trường thông tin và hiển thị danh sách dịch vụ
+            Emptytextfiled();
+            ListDichVu();
+        }
+        private void ShowSearchByIdField()
+        {
+            txtmadv_search.Enabled = true;  // Mã khách hàng
+            txttendv_search.Enabled = false;
+            cboloaidv_search.Enabled = false;
+            cbogiadv_search.Enabled = false;
+        }
+
+        // Hiển thị các trường tìm kiếm khác, ẩn trường mã khách hàng
+        private void ShowOtherSearchFields()
+        {
+            txtmadv_search.Enabled = false;  // Mã khách hàng
+            txttendv_search.Enabled = true;
+            cboloaidv_search.Enabled = true;
+            cbogiadv_search.Enabled = true;
+        }
+        private void HideAllSearchFields()
+        {
+            txtmadv_search.Enabled = false;
+            txttendv_search.Enabled = false;
+            cboloaidv_search.Enabled = false;
+            cbogiadv_search.Enabled = false;
+        }
+
+        private void Emptytextfiled()
+        {
+            txtmadv_search.Text = String.Empty;
+            txttendv_search.Text = String.Empty;
+            cboloaidv_search.SelectedIndex = -1;
+            cbogiadv_search.SelectedIndex = -1;
+        }
+       
+
     }
 }

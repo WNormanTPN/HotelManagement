@@ -80,12 +80,18 @@ namespace BUS
             DataTable dt = db.getList(query);
             return dt;
         }
+        /*hương thức này nhận các tham số để tìm kiếm dịch vụ dựa trên mã dịch vụ, tên dịch vụ, loại dịch vụ và giá dịch vụ.
+        Nó xây dựng một truy vấn SQL bằng cách thêm các điều kiện nếu các tham số không rỗng.
+        Cuối cùng, nó gọi phương thức getList trên đối tượng db để thực hiện truy vấn và trả về kết quả dưới dạng DataTable.
+            */
         public DataTable getImageDichVubyMaDV(string maDV)
         {
             string query = "select hinhAnh from DichVu where maDV = '" + maDV + "' AND XuLy = 0";
             DataTable dt = db.getList(query);
             return dt;
         }
+        /*Phương thức này lấy hình ảnh của dịch vụ dựa trên mã dịch vụ (maDV). Truy vấn SQL chỉ lấy cột hinhAnh.
+         * */
         public DataTable IsMaDVExists(string maDV)
         {
             string query = "select * from DichVu where maDV = '" + maDV + "'";
@@ -160,6 +166,9 @@ namespace BUS
             }
             DataTable dt = db.getList(query);
             return dt;
+            /*Phương thức này tìm kiếm dịch vụ dựa trên mã hoặc tên và loại dịch vụ. 
+            Nếu người dùng không nhập mã hoặc tên, phương thức sẽ lấy tất cả dịch vụ còn hiệu lực.
+            */
         }
     }
 }

@@ -130,118 +130,30 @@ namespace GUI.GUI_THONGKE
             chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.WhiteSmoke;
             chart3.ChartAreas[0].AxisX.LineColor = Color.Transparent;
             chart3.ChartAreas[0].AxisY.LineColor = Color.Transparent;
+
             foreach (var series in chart3.Series)
             {
                 series.Points.Clear();
             }
             if (DateTime.IsLeapYear(nam))
             {
-                switch (thang)
-                {
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                    case 8:
-                    case 10:
-                    case 12:
-                        for (int i = 1; i <= 31; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
+                var roomRevenue = hd.TongTienPhongTrongMotNgay(i.ToString(), thang.ToString(), nam.ToString());
+                var serviceRevenue = hd.TongTienDichVuTrongMotNgay(i.ToString(), thang.ToString(), nam.ToString());
+
+                chart3.Series["Series1"].Points.AddXY(i, roomRevenue);
+                chart3.Series["Series2"].Points.AddXY(i, serviceRevenue);
+
+                if (roomRevenue != 0)
+                    chart3.Series["Series1"].Points[i - 1].Label = roomRevenue.ToString();
+                if (serviceRevenue != 0)
+                    chart3.Series["Series2"].Points[i - 1].Label = serviceRevenue.ToString();
                         }
-                        break;
-                    case 2:
-                        for (int i = 1; i <= 29; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
                         }
-                        break;
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11:
-                        for (int i = 1; i <= 30; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                        }
-                        break;
-                }
-            }
-            else
-            {
-                switch (thang)
-                {
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                    case 8:
-                    case 10:
-                    case 12:
-                        for (int i = 1; i <= 31; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                        }
-                        break;
-                    case 2:
-                        for (int i = 1; i <= 28; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                        }
-                        break;
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11:
-                        for (int i = 1; i <= 30; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                        }
-                        break;
-                }
-            }
-        }
 
         void BieuDoThongKeNamLoad(int nam)
         {
-            Title title4 = new Title();
-            title4.Font = fontTitle;
-            title4.Text = "Biểu đồ thống kê tiền phòng và dịch vụ trong năm " + nam;
-            try
-            {
-                chart4.Titles.RemoveAt(0);
-            }
-            catch (Exception) { }
+            Title title4 = new Title { Font = fontTitle, Text = $"Biểu đồ thống kê tiền phòng và dịch vụ trong năm {nam}" };
+            try { chart4.Titles.RemoveAt(0); } catch (Exception) { }
             chart4.Titles.Add(title4);
             chart4.Series["Series1"].LegendText = "Tiền phòng";
             chart4.Series["Series2"].LegendText = "Tiền dịch vụ";
@@ -251,18 +163,24 @@ namespace GUI.GUI_THONGKE
             chart4.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.WhiteSmoke;
             chart4.ChartAreas[0].AxisX.LineColor = Color.Transparent;
             chart4.ChartAreas[0].AxisY.LineColor = Color.Transparent;
+
             foreach (var series in chart4.Series)
             {
                 series.Points.Clear();
             }
+
             for (int i = 1; i <= 12; i++)
             {
-                chart4.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotThang(i + "", nam + ""));
-                if (hd.TongTienPhongTrongMotThang(i + "", nam + "") != 0)
-                    chart4.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotThang(i + "", nam + "").ToString();
-                chart4.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotThang(i + "", nam + ""));
-                if (hd.TongTienDichVuTrongMotThang(i + "", nam + "") != 0)
-                    chart4.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotThang(i + "", nam + "").ToString();
+                var roomRevenue = hd.TongTienPhongTrongMotThang(i.ToString(), nam.ToString());
+                var serviceRevenue = hd.TongTienDichVuTrongMotThang(i.ToString(), nam.ToString());
+
+                chart4.Series["Series1"].Points.AddXY(i, roomRevenue);
+                chart4.Series["Series2"].Points.AddXY(i, serviceRevenue);
+
+                if (roomRevenue != 0)
+                    chart4.Series["Series1"].Points[i - 1].Label = roomRevenue.ToString();
+                if (serviceRevenue != 0)
+                    chart4.Series["Series2"].Points[i - 1].Label = serviceRevenue.ToString();
             }
         }
 

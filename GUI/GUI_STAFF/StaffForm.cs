@@ -20,12 +20,65 @@ namespace GUI.GUI_STAFF
 {
     public partial class StaffForm : Form
     {
+
         NhanVienBUS nhanVienBUS = new NhanVienBUS();
 
         public StaffForm()
         {
             InitializeComponent();
+            this.KeyDown += new KeyEventHandler(StaffForm_KeyDown);
+            this.KeyPreview = true;
+            txtMaNV.Click += TxtMaNV_Click;
+            txtTenNV.TextChanged += OtherFields_TextChanged;
+            cbGioiTinh.TextChanged += OtherFields_TextChanged;
+            cbChucVu.TextChanged += OtherFields_TextChanged;
+            cbNgayNghiPhep.TextChanged += OtherFields_TextChanged;
+            cbLuong1Ngay.TextChanged += OtherFields_TextChanged;
+            dtpNgaySinhTu.ValueChanged += OtherFields_TextChanged;
+            dtpNgaySinhDen.ValueChanged += OtherFields_TextChanged;
+            dtpNgayVaoLamTu.ValueChanged += OtherFields_TextChanged;
+            dtpNgayVaoLamDen.ValueChanged += OtherFields_TextChanged;
+            txtEmail.TextChanged += OtherFields_TextChanged;
             onLoad();
+        }
+
+        private void TxtMaNV_Click(object sender, EventArgs e)
+        {
+            SetOtherFieldsEnable(false);
+        }
+
+        private void OtherFields_TextChanged(object sender, EventArgs e)
+        {
+            bool areOtherFieldsEmpty = string.IsNullOrEmpty(txtTenNV.Text) && 
+                string.IsNullOrEmpty(cbGioiTinh.Text) &&
+                string.IsNullOrEmpty(cbChucVu.Text) &&
+                string.IsNullOrEmpty(txtEmail.Text) &&
+                string.IsNullOrEmpty(cbNgayNghiPhep.Text) &&
+                string.IsNullOrEmpty(cbLuong1Ngay.Text) &&
+                dtpNgaySinhTu.Value == dtpNgaySinhTu.MinDate &&
+                dtpNgaySinhDen.Value == dtpNgaySinhDen.MinDate &&
+                dtpNgayVaoLamTu.Value == dtpNgayVaoLamDen.MinDate &&
+                dtpNgayVaoLamDen.Value == dtpNgayVaoLamDen.MinDate;
+            txtMaNV.Enabled = areOtherFieldsEmpty;
+        }
+
+        private void SetOtherFieldsEnable(bool enabled)
+        {
+            txtTenNV.Enabled = enabled;
+            cbGioiTinh.Enabled = enabled;
+            cbChucVu.Enabled = enabled;
+            cbLuong1Ngay.Enabled = enabled;
+            cbNgayNghiPhep.Enabled = enabled;
+            dtpNgaySinhTu.Enabled = enabled;
+            dtpNgaySinhDen.Enabled = enabled;
+            dtpNgayVaoLamTu.Enabled = enabled;
+            dtpNgayVaoLamDen.Enabled = enabled;
+            txtEmail.Enabled = enabled;
+        }
+
+        private void TxtTenNV_TextChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void onLoad()
@@ -146,6 +199,15 @@ namespace GUI.GUI_STAFF
             onLoad(dt);
         }
 
+        private void StaffForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+        }
+
         private void btnReset_Click(object sender, EventArgs e)//*****
         {
             refresh();
@@ -171,6 +233,8 @@ namespace GUI.GUI_STAFF
             dtpNgaySinhDen.Value = DateTime.Now;
             dtpNgayVaoLamTu.Value = DateTime.Now;
             dtpNgayVaoLamDen.Value = DateTime.Now;
+            SetOtherFieldsEnable(true);
+            txtMaNV.Enabled = true;
             txtEmail.Text = string.Empty;
             dataNhanVien.Rows.Clear();
             onLoad();

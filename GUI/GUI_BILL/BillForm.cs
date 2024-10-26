@@ -92,6 +92,9 @@ namespace GUI.GUI_BILL
             dtpNgayBatDau.CustomFormat = " ";
             dtpNgayKetThuc.CustomFormat = " ";
             HienThiHoaDon();
+            searchWithIDCTT(true);
+            searchWithIDHD(true);
+            searchWithOther(true);
         }
 
         private void buttonRounded1_Click(object sender, EventArgs e)
@@ -476,6 +479,91 @@ namespace GUI.GUI_BILL
             document.Add(table1);
             document.Close();
             System.Diagnostics.Process.Start(maHD + ".pdf");
+        }
+
+        private void txtMaHoaDon_TextChanged(object sender, EventArgs e)
+        {
+            if (txtMaHoaDon.Text.Length == 0)
+            {
+                searchWithIDHD(true);
+                searchWithIDCTT(true);
+                searchWithOther(true);
+            }
+            else
+            {
+                searchWithIDHD(true);
+                searchWithIDCTT(false);
+                searchWithOther(false);
+            }
+        }
+
+        private void searchWithIDHD(bool enable)
+        {
+            if (!enable) txtMaHoaDon.Text = "";
+            txtMaHoaDon.Enabled = enable;
+        }
+
+        private void searchWithIDCTT(bool enable)
+        {
+            if (!enable) txtMaChiTietThue.Text = "";
+            txtMaChiTietThue.Enabled = enable;
+        }
+
+        private void searchWithOther(bool enable)
+        {
+            if (!enable)
+            {
+                dtpNgayBatDau.CustomFormat = " ";
+                dtpNgayKetThuc.CustomFormat = " ";
+                txtTenNhanVien.Text = "";
+                txtGiamGia.Text = "";
+                txtPhuThu.Text = "";
+                cbPhuongThucTT.SelectedIndex = -1;
+                cbTongTien.SelectedIndex = -1;
+                cbTienDichVu.SelectedIndex = -1;
+                cbTienPhong.SelectedIndex = -1;
+            }
+            dtpNgayBatDau.Enabled = enable;
+            dtpNgayKetThuc.Enabled = enable;
+            txtTenNhanVien.Enabled = enable;
+            txtGiamGia.Enabled = enable;
+            txtPhuThu.Enabled = enable;
+            cbPhuongThucTT.Enabled = enable;
+            cbTongTien.Enabled = enable;
+            cbTienDichVu.Enabled = enable;
+            cbTienPhong.Enabled = enable;
+        }
+
+        private void txtMaChiTietThue_TextChanged(object sender, EventArgs e)
+        {
+            if (txtMaChiTietThue.Text.Length == 0)
+            {
+                searchWithIDHD(true);
+                searchWithIDCTT(true);
+                searchWithOther(true);
+            }
+            else
+            {
+                searchWithIDHD(false);
+                searchWithIDCTT(true);
+                searchWithOther(false);
+            }
+        }
+
+        private void triggerOtherSearch(object sender, EventArgs e)
+        {
+            if (txtTenNhanVien.Text.Length == 0 && txtGiamGia.Text.Length == 0 && txtPhuThu.Text.Length == 0 && cbPhuongThucTT.SelectedIndex == -1 && cbTongTien.SelectedIndex == -1 && cbTienDichVu.SelectedIndex == -1 && cbTienPhong.SelectedIndex == -1 && dtpNgayBatDau.CustomFormat.ToString().Length == 1 && dtpNgayKetThuc.CustomFormat.ToString().Length == 1)
+            {
+                searchWithIDHD(true);
+                searchWithIDCTT(true);
+                searchWithOther(true);
+            }
+            else
+            {
+                searchWithIDHD(false);
+                searchWithIDCTT(false);
+                searchWithOther(true);
+            }
         }
     }
 }

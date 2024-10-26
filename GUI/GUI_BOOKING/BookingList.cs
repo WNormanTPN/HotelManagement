@@ -116,6 +116,8 @@ namespace GUI.GUI_BOOKING
             cb_TinhTrangXuLy.SelectedIndex = -1;
             dateTime_NgayLap.CustomFormat = " ";
             HienThiDSChiTietThue();
+            searchWithID(true);
+            searchWithOther(true);
         }
 
         private void tbRoom_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -228,6 +230,74 @@ namespace GUI.GUI_BOOKING
         private void dateTime_NgayLap_ValueChanged(object sender, EventArgs e)
         {
             dateTime_NgayLap.CustomFormat = "dd/MM/yyyy";
+            searchWithOther(true);
+            searchWithID(false);
+        }
+
+        private void txt_MaCTT_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_MaCTT.Text.Length == 0)
+            {
+                searchWithID(true);
+                searchWithOther(true);
+            }
+            else
+            {
+                searchWithID(true);
+                searchWithOther(false);
+            }
+        }
+
+        private void triggerSearchWithOtherMode(object sender, EventArgs e)
+        {
+            if (txt_MaKH.Text.Length == 0 &&
+                txt_MaNV.Text.Length == 0 &&
+                txt_TenKH.Text.Length == 0 &&
+                txt_TenNV.Text.Length == 0 &&
+                cb_TienCoc.SelectedIndex == -1 &&
+                cb_TinhTrangXuLy.SelectedIndex == -1 &&
+                dateTime_NgayLap.CustomFormat == " ")
+            {
+                searchWithOther(true);
+                searchWithID(true);
+            }
+            else
+            {
+                searchWithOther(true);
+                searchWithID(false);
+            }
+        }
+
+        private void searchWithID(bool enable)
+        {
+            if(!enable) txt_MaCTT.Text = "";
+            txt_MaCTT.Enabled = enable;
+        }
+
+        private void searchWithOther(bool enable)
+        {
+            if (!enable)
+            {
+                txt_MaKH.Text = "";
+                txt_TenKH.Text = "";
+                txt_MaNV.Text = "";
+                txt_TenNV.Text = "";
+                cb_TienCoc.SelectedIndex = -1;
+                cb_TinhTrangXuLy.SelectedIndex = -1;
+                dateTime_NgayLap.CustomFormat = " ";
+            }
+            txt_MaKH.Enabled = enable;
+            txt_TenKH.Enabled = enable;
+            txt_MaNV.Enabled = enable;
+            txt_TenNV.Enabled = enable;
+            cb_TienCoc.Enabled = enable;
+            cb_TinhTrangXuLy.Enabled = enable;
+            dateTime_NgayLap.Enabled = enable;
+        }
+
+        private void turnOnSearchWithOtherMode(object sender, EventArgs e)
+        {
+
         }
     }
 }

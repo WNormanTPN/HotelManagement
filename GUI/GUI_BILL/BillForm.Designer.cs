@@ -240,6 +240,7 @@
             this.txtTenNhanVien.Name = "txtTenNhanVien";
             this.txtTenNhanVien.Size = new System.Drawing.Size(206, 30);
             this.txtTenNhanVien.TabIndex = 5;
+            this.txtTenNhanVien.TextChanged += new System.EventHandler(this.triggerOtherSearch);
             // 
             // label14
             // 
@@ -284,6 +285,7 @@
             this.cbTienPhong.Name = "cbTienPhong";
             this.cbTienPhong.Size = new System.Drawing.Size(180, 31);
             this.cbTienPhong.TabIndex = 11;
+            this.cbTienPhong.TextChanged += new System.EventHandler(this.triggerOtherSearch);
             // 
             // label13
             // 
@@ -328,6 +330,7 @@
             this.cbTienDichVu.Name = "cbTienDichVu";
             this.cbTienDichVu.Size = new System.Drawing.Size(176, 31);
             this.cbTienDichVu.TabIndex = 10;
+            this.cbTienDichVu.TextChanged += new System.EventHandler(this.triggerOtherSearch);
             // 
             // label10
             // 
@@ -372,6 +375,7 @@
             this.cbTongTien.Name = "cbTongTien";
             this.cbTongTien.Size = new System.Drawing.Size(236, 31);
             this.cbTongTien.TabIndex = 9;
+            this.cbTongTien.TextChanged += new System.EventHandler(this.triggerOtherSearch);
             // 
             // label6
             // 
@@ -406,6 +410,7 @@
             this.txtPhuThu.Name = "txtPhuThu";
             this.txtPhuThu.Size = new System.Drawing.Size(249, 30);
             this.txtPhuThu.TabIndex = 8;
+            this.txtPhuThu.TextChanged += new System.EventHandler(this.triggerOtherSearch);
             this.txtPhuThu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhuThu_KeyPress);
             // 
             // label11
@@ -441,6 +446,7 @@
             this.txtMaChiTietThue.Name = "txtMaChiTietThue";
             this.txtMaChiTietThue.Size = new System.Drawing.Size(193, 30);
             this.txtMaChiTietThue.TabIndex = 2;
+            this.txtMaChiTietThue.TextChanged += new System.EventHandler(this.txtMaChiTietThue_TextChanged);
             // 
             // label3
             // 
@@ -475,6 +481,7 @@
             this.txtMaHoaDon.Name = "txtMaHoaDon";
             this.txtMaHoaDon.Size = new System.Drawing.Size(230, 30);
             this.txtMaHoaDon.TabIndex = 1;
+            this.txtMaHoaDon.TextChanged += new System.EventHandler(this.txtMaHoaDon_TextChanged);
             // 
             // label5
             // 
@@ -509,6 +516,7 @@
             this.txtGiamGia.Name = "txtGiamGia";
             this.txtGiamGia.Size = new System.Drawing.Size(246, 30);
             this.txtGiamGia.TabIndex = 7;
+            this.txtGiamGia.TextChanged += new System.EventHandler(this.triggerOtherSearch);
             this.txtGiamGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiamGia_KeyPress);
             // 
             // label4
@@ -547,7 +555,7 @@
             this.dtpNgayBatDau.Name = "dtpNgayBatDau";
             this.dtpNgayBatDau.Size = new System.Drawing.Size(192, 30);
             this.dtpNgayBatDau.TabIndex = 3;
-            this.dtpNgayBatDau.ValueChanged += new System.EventHandler(this.dtpNgayBatDau_ValueChanged);
+            this.dtpNgayBatDau.ValueChanged += new System.EventHandler(this.triggerOtherSearch);
             // 
             // label7
             // 
@@ -585,7 +593,7 @@
             this.dtpNgayKetThuc.Name = "dtpNgayKetThuc";
             this.dtpNgayKetThuc.Size = new System.Drawing.Size(252, 30);
             this.dtpNgayKetThuc.TabIndex = 4;
-            this.dtpNgayKetThuc.ValueChanged += new System.EventHandler(this.dtpNgayKetThuc_ValueChanged);
+            this.dtpNgayKetThuc.ValueChanged += new System.EventHandler(this.triggerOtherSearch);
             // 
             // label8
             // 
@@ -626,6 +634,7 @@
             this.cbPhuongThucTT.Name = "cbPhuongThucTT";
             this.cbPhuongThucTT.Size = new System.Drawing.Size(193, 31);
             this.cbPhuongThucTT.TabIndex = 6;
+            this.cbPhuongThucTT.TextChanged += new System.EventHandler(this.triggerOtherSearch);
             // 
             // label9
             // 

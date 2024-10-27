@@ -28,7 +28,6 @@ namespace GUI.GUI_STAFF
             InitializeComponent();
             this.KeyDown += new KeyEventHandler(StaffForm_KeyDown);
             this.KeyPreview = true;
-            //txtMaNV.Click += TxtMaNV_Click;
             txtMaNV.TextChanged += TxtMaNV_TextChanged;
             txtTenNV.TextChanged += OtherFields_TextChanged;
             cbGioiTinh.TextChanged += OtherFields_TextChanged;
@@ -51,21 +50,52 @@ namespace GUI.GUI_STAFF
 
         private void OtherFields_TextChanged(object sender, EventArgs e)
         {
+            //CheckAndEnableMaNV();
+
             bool areOtherFieldsEmpty = string.IsNullOrEmpty(txtTenNV.Text) && 
                 string.IsNullOrEmpty(cbGioiTinh.Text) &&
                 string.IsNullOrEmpty(cbChucVu.Text) &&
                 string.IsNullOrEmpty(txtEmail.Text) &&
                 string.IsNullOrEmpty(cbNgayNghiPhep.Text) &&
                 string.IsNullOrEmpty(cbLuong1Ngay.Text) &&
-                dtpNgaySinhTu.Value == dtpNgaySinhTu.MinDate &&
-                dtpNgaySinhDen.Value == dtpNgaySinhDen.MinDate &&
-                dtpNgayVaoLamTu.Value == dtpNgayVaoLamDen.MinDate &&
-                dtpNgayVaoLamDen.Value == dtpNgayVaoLamDen.MinDate;
-            txtMaNV.Enabled = areOtherFieldsEmpty;
+                dtpNgaySinhTu.Text == " " &&
+                dtpNgaySinhDen.Text == " " &&
+                dtpNgayVaoLamTu.Text == " " &&
+                dtpNgayVaoLamDen.Text == " ";
+            if (areOtherFieldsEmpty)
+            {
+                txtMaNV.Enabled = true;
+            }
+            else
+            {
+                txtMaNV.Enabled = false;
+            }
+        }
+
+        private void CheckAndEnableMaNV()
+        {
+            if (string.IsNullOrEmpty(txtTenNV.Text) &&
+                string.IsNullOrEmpty(cbGioiTinh.Text) &&
+                string.IsNullOrEmpty(cbChucVu.Text) &&
+                string.IsNullOrEmpty(txtEmail.Text) &&
+                string.IsNullOrEmpty(cbNgayNghiPhep.Text) &&
+                string.IsNullOrEmpty(cbLuong1Ngay.Text))
+                //dtpNgaySinhTu.Value == dtpNgaySinhTu.MinDate &&
+                //dtpNgaySinhDen.Value == dtpNgaySinhDen.MinDate &&
+                //dtpNgayVaoLamTu.Value == dtpNgayVaoLamDen.MinDate &&
+                //dtpNgayVaoLamDen.Value == dtpNgayVaoLamDen.MinDate)
+            {
+                txtMaNV.Enabled = true;
+            } 
+            else
+            {
+                txtMaNV.Enabled = false;
+            }
         }
 
         private void SetOtherFieldsEnable(bool enabled)
         {
+            
             txtTenNV.Enabled = enabled;
             cbGioiTinh.Enabled = enabled;
             cbChucVu.Enabled = enabled;

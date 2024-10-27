@@ -17,14 +17,14 @@ namespace DAO
         // Tập hợp dữ liệu
         DataSet ds;
 
-        public string serverName = @"IRIS";
+
+        public string serverName = @"iris523.database.windows.net";
         public string dbName = "QLKS";
-        // public string userName = "nhom8";
-        // public string password = "Gohomeafter10pm";
+        public string userName = "nhom8";
+        public string password = "Gohomeafter10pm";
         public Database()
         {
-            string stringConnect = "Server=" + serverName + "; Database=" + dbName + "; Integrated Security=True;";
-            // string stringConnect = "Server=" + serverName + "; Database=" + dbName + "; User Id=" + userName + "; Password=" + password + ";"; 
+            string stringConnect = "Server=" + serverName + "; Database=" + dbName + "; User Id=" + userName + "; Password=" + password + ";"; 
             conn = new SqlConnection(stringConnect);
         }
 

@@ -448,5 +448,128 @@ namespace GUI.GUI_ROOM
                 }
             }
         }
+
+        private void txtMaP_Enter(object sender, EventArgs e)
+        {
+            txtTenP.BackColor = Color.Gray;
+            txtTenP.Clear();
+            txtTenP.Enabled = false;
+            cbLoaiP.BackColor = Color.Gray;
+            cbLoaiP.Enabled = false;
+            cbLoaiP.SelectedIndex = -1;
+            cbCTLP.BackColor = Color.Gray;
+            cbCTLP.Enabled = false;
+            cbCTLP.SelectedIndex = -1;
+            cbGiaP.BackColor = Color.Gray;
+            cbGiaP.Enabled = false;
+            cbGiaP.SelectedIndex = -1;
+            cbTinhTrang.BackColor = Color.Gray;
+            cbTinhTrang.Enabled = false;
+            cbTinhTrang.SelectedIndex = -1;
+            cbHienTrang.BackColor = Color.Gray;
+            cbHienTrang.Enabled = false;
+            cbHienTrang.SelectedIndex = -1;
+        }
+
+        private void txtMaP_Leave(object sender, EventArgs e)
+        {
+            txtTenP.BackColor = Color.White;
+            txtTenP.Enabled = true;
+            cbLoaiP.BackColor = Color.White;
+            cbLoaiP.Enabled = true;
+            cbCTLP.BackColor = Color.White;
+            cbCTLP.Enabled = true;
+            cbGiaP.BackColor = Color.White;
+            cbGiaP.Enabled = true;
+            cbTinhTrang.BackColor = Color.White;
+            cbTinhTrang.Enabled = true;
+            cbHienTrang.BackColor = Color.White;
+            cbHienTrang.Enabled = true;
+        }
+
+        private void txtTenP_Enter(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.Gray;
+            txtMaP.Clear();
+            txtMaP.Enabled = false;
+        }
+
+        private void txtTenP_Leave(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.White;
+            
+            txtMaP.Enabled = true;
+        }
+
+        private void cbLoaiP_Enter(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.Gray;
+            txtMaP.Clear();
+            txtMaP.Enabled = false;
+        }
+
+        private void cbLoaiP_Leave(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.White;
+
+            txtMaP.Enabled = true;
+        }
+
+
+        private void cbCTLP_Enter(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.Gray;
+            txtMaP.Clear();
+            txtMaP.Enabled = false;
+        }
+
+        private void cbCTLP_Leave(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.White;
+
+            txtMaP.Enabled = true;
+        }
+
+        private void cbGiaP_Enter(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.Gray;
+            txtMaP.Clear();
+            txtMaP.Enabled = false;
+        }
+
+        private void cbGiaP_Leave(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.White;
+
+            txtMaP.Enabled = true;
+        }
+
+        private void cbTinhTrang_Enter(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.Gray;
+            txtMaP.Clear();
+            txtMaP.Enabled = false;
+        }
+
+        private void cbTinhTrang_Leave(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.White;
+
+            txtMaP.Enabled = true;
+        }
+
+        private void cbHienTrang_Enter(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.Gray;
+            txtMaP.Clear();
+            txtMaP.Enabled = false;
+        }
+
+        private void cbHienTrang_Leave(object sender, EventArgs e)
+        {
+            txtMaP.BackColor = Color.White;
+
+            txtMaP.Enabled = true;
+        }
     }
 }

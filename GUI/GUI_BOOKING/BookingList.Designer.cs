@@ -262,6 +262,7 @@
             this.cb_TienCoc.Name = "cb_TienCoc";
             this.cb_TienCoc.Size = new System.Drawing.Size(171, 31);
             this.cb_TienCoc.TabIndex = 6;
+            this.cb_TienCoc.TextChanged += new System.EventHandler(this.triggerSearchWithOtherMode);
             // 
             // label10
             // 
@@ -299,6 +300,7 @@
             this.cb_TinhTrangXuLy.Name = "cb_TinhTrangXuLy";
             this.cb_TinhTrangXuLy.Size = new System.Drawing.Size(115, 31);
             this.cb_TinhTrangXuLy.TabIndex = 7;
+            this.cb_TinhTrangXuLy.TextChanged += new System.EventHandler(this.triggerSearchWithOtherMode);
             // 
             // label9
             // 
@@ -332,6 +334,7 @@
             this.txt_TenKH.Name = "txt_TenKH";
             this.txt_TenKH.Size = new System.Drawing.Size(112, 30);
             this.txt_TenKH.TabIndex = 3;
+            this.txt_TenKH.TextChanged += new System.EventHandler(this.triggerSearchWithOtherMode);
             // 
             // label8
             // 
@@ -365,6 +368,7 @@
             this.txt_MaNV.Name = "txt_MaNV";
             this.txt_MaNV.Size = new System.Drawing.Size(130, 30);
             this.txt_MaNV.TabIndex = 4;
+            this.txt_MaNV.TextChanged += new System.EventHandler(this.triggerSearchWithOtherMode);
             // 
             // label6
             // 
@@ -398,6 +402,7 @@
             this.txt_TenNV.Name = "txt_TenNV";
             this.txt_TenNV.Size = new System.Drawing.Size(127, 30);
             this.txt_TenNV.TabIndex = 5;
+            this.txt_TenNV.TextChanged += new System.EventHandler(this.triggerSearchWithOtherMode);
             // 
             // label5
             // 
@@ -431,6 +436,7 @@
             this.txt_MaKH.Name = "txt_MaKH";
             this.txt_MaKH.Size = new System.Drawing.Size(116, 30);
             this.txt_MaKH.TabIndex = 2;
+            this.txt_MaKH.TextChanged += new System.EventHandler(this.triggerSearchWithOtherMode);
             // 
             // label4
             // 
@@ -464,6 +470,7 @@
             this.txt_MaCTT.Name = "txt_MaCTT";
             this.txt_MaCTT.Size = new System.Drawing.Size(113, 30);
             this.txt_MaCTT.TabIndex = 1;
+            this.txt_MaCTT.TextChanged += new System.EventHandler(this.txt_MaCTT_TextChanged);
             // 
             // label3
             // 

@@ -19,91 +19,76 @@ namespace GUI.GUI_THONGKE
         HoaDonBUS hd = new HoaDonBUS();
         public FormChart()
         {
-            InitializeComponent();
-            lbTongDoanhThuDichVu.Text = hd.TongTienDV().ToString("###,###0 VNĐ");
-            lbTongTienDichVuPhanTich.Text = hd.TongTienDV().ToString("###,###0 VNĐ");
-            lbTongDoanhThuPhong.Text = hd.TongTienPhong().ToString("###,###0 VNĐ");
-            lbTongTienPhongPhanTich.Text = hd.TongTienPhong().ToString("###,###0 VNĐ");
+            try
+            {
+                InitializeComponent();
+                lbTongDoanhThuDichVu.Text = hd.TongTienDV().ToString("###,###0 VNĐ");
+                lbTongTienDichVuPhanTich.Text = hd.TongTienDV().ToString("###,###0 VNĐ");
+                lbTongDoanhThuPhong.Text = hd.TongTienPhong().ToString("###,###0 VNĐ");
+                lbTongTienPhongPhanTich.Text = hd.TongTienPhong().ToString("###,###0 VNĐ");
 
-            lbTongDoanhThu.Text = hd.TongDoanhThu().ToString("###,###0 VNĐ");
-            lbTongDoanhThuPhanTich.Text = hd.TongDoanhThu().ToString("###,###0 VNĐ");
+                lbTongDoanhThu.Text = hd.TongDoanhThu().ToString("###,###0 VNĐ");
+                lbTongDoanhThuPhanTich.Text = hd.TongDoanhThu().ToString("###,###0 VNĐ");
 
-            lbTongPhuThuPhanTich.Text = hd.TongPhuThu().ToString("###,###0 VNĐ");
-            lbTongGiamGiaThanhToan.Text = hd.TongGiamGia().ToString("###,###0 VNĐ");
-            BieuDoPhongLoad(DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
-            BieuDoLoaiPhongLoad(DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
-            BieuDoThongKeThangLoad(int.Parse(DateTime.Now.ToString("MM")), int.Parse(DateTime.Now.ToString("yyyy")));
-            BieuDoThongKeNamLoad(int.Parse(DateTime.Now.ToString("yyyy")));
+                lbTongPhuThuPhanTich.Text = hd.TongPhuThu().ToString("###,###0 VNĐ");
+                lbTongGiamGiaThanhToan.Text = hd.TongGiamGia().ToString("###,###0 VNĐ");
+                BieuDoPhongLoad(DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
+                BieuDoLoaiPhongLoad(DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));
+                BieuDoThongKeThangLoad(int.Parse(DateTime.Now.ToString("MM")), int.Parse(DateTime.Now.ToString("yyyy")));
+                BieuDoThongKeNamLoad(int.Parse(DateTime.Now.ToString("yyyy")));
+            }
+            catch (Exception) { }
         }
         void BieuDoPhongLoad(string tungay, string denngay)
         {
-            Title title1 = new Title();
-            title1.Font = fontTitle;
-            title1.Text = "Biểu đồ thống kê tương quan phòng Vip và Thường";
+            Title title1 = new Title { Font = fontTitle, Text = "Biểu đồ thống kê tương quan phòng Vip và Thường" };
+            try { chart1.Titles.RemoveAt(0); } catch (Exception) { }
             chart1.Titles.Add(title1);
-            try
-            {
-                chart1.Titles.RemoveAt(0);
-            }
-            catch (Exception) { }
+
             int total = hd.TongLoaiPhong(tungay, denngay);
             int totalVip = hd.TongLoaiPhongVip(tungay, denngay);
             int totalThuong = hd.TongLoaiPhongThuong(tungay, denngay);
+
             foreach (var series in chart1.Series)
             {
                 series.Points.Clear();
             }
+
             chart1.Series["Series1"].ChartType = SeriesChartType.Doughnut;
             if (total != 0)
             {
-                DataPoint point1 = new DataPoint();
-                point1.SetValueXY("Phòng Thường",  totalThuong * 100 / total);
-                point1.LegendText = "Phòng Thường";
-                DataPoint point2 = new DataPoint();
-                point2.SetValueXY("Phòng VIP", totalVip * 100 / total);
-                point2.LegendText = "Phòng VIP";
-
-                chart1.Series["Series1"].Points.Add(point1);
-                chart1.Series["Series1"].Points.Add(point2);
-
+                chart1.Series["Series1"].Points.AddXY("Phòng Thường", totalThuong * 100 / total);
+                chart1.Series["Series1"].Points[0].LegendText = "Phòng Thường";
+                chart1.Series["Series1"].Points.AddXY("Phòng VIP", totalVip * 100 / total);
+                chart1.Series["Series1"].Points[1].LegendText = "Phòng VIP";
                 chart1.Series["Series1"].Label = "#PERCENT{P0}";
             }
         }
         void BieuDoLoaiPhongLoad(string tungay, string denngay)
         {
-            Title title2 = new Title();
-            title2.Font = fontTitle;
-            title2.Text = "Biểu đồ thống kê tương quan Chi tiết loại phòng";
+            Title title2 = new Title { Font = fontTitle, Text = "Biểu đồ thống kê tương quan Chi tiết loại phòng" };
+            try { chart2.Titles.RemoveAt(0); } catch (Exception) { }
             chart2.Titles.Add(title2);
-            try
-            {
-                chart2.Titles.RemoveAt(0);
-            }
-            catch (Exception) { }
+
             int total = hd.TongLoaiPhong(tungay, denngay);
             int totalDon = hd.TongLoaiPhongDon(tungay, denngay);
             int totalDoi = hd.TongLoaiPhongDoi(tungay, denngay);
             int totalGiaDinh = hd.TongLoaiPhongGiaDinh(tungay, denngay);
+
             foreach (var series in chart2.Series)
             {
                 series.Points.Clear();
             }
+
             chart2.Series["Series1"].ChartType = SeriesChartType.Doughnut;
             if (total != 0)
             {
-                DataPoint point1 = new DataPoint();
-                point1.SetValueXY("Phòng Đơn", totalDon * 100 / total);
-                point1.LegendText = "Phòng Đơn";
-                DataPoint point2 = new DataPoint();
-                point2.SetValueXY("Phòng Đôi", totalDoi * 100 / total);
-                point2.LegendText = "Phòng Đôi";
-                DataPoint point3 = new DataPoint();
-                point3.SetValueXY("Phòng Gia đình", totalGiaDinh * 100 / total);
-                point3.LegendText = "Phòng Gia đình";
-
-                chart2.Series["Series1"].Points.Add(point1);
-                chart2.Series["Series1"].Points.Add(point2);
-                chart2.Series["Series1"].Points.Add(point3);
+                chart2.Series["Series1"].Points.AddXY("Phòng Đơn", totalDon * 100 / total);
+                chart2.Series["Series1"].Points[0].LegendText = "Phòng Đơn";
+                chart2.Series["Series1"].Points.AddXY("Phòng Đôi", totalDoi * 100 / total);
+                chart2.Series["Series1"].Points[1].LegendText = "Phòng Đôi";
+                chart2.Series["Series1"].Points.AddXY("Phòng Gia đình", totalGiaDinh * 100 / total);
+                chart2.Series["Series1"].Points[2].LegendText = "Phòng Gia đình";
 
                 chart2.Series["Series1"].Label = "#PERCENT{P0}";
             }
@@ -111,14 +96,8 @@ namespace GUI.GUI_THONGKE
 
         void BieuDoThongKeThangLoad(int thang, int nam)
         {
-            Title title3 = new Title();
-            title3.Font = fontTitle;
-            title3.Text = "Biểu đồ thống kê tiền phòng và dịch vụ theo tháng " + thang + " năm " + nam;
-            try
-            {
-                chart3.Titles.RemoveAt(0);
-            }
-            catch (Exception) { }
+            Title title3 = new Title { Font = fontTitle, Text = $"Biểu đồ thống kê tiền phòng và dịch vụ theo tháng {thang} năm {nam}" };
+            try { chart3.Titles.RemoveAt(0); } catch (Exception) { }
             chart3.Titles.Add(title3);
             chart3.Series["Series1"].LegendText = "Tiền phòng";
             chart3.Series["Series2"].LegendText = "Tiền dịch vụ";
@@ -130,118 +109,33 @@ namespace GUI.GUI_THONGKE
             chart3.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.WhiteSmoke;
             chart3.ChartAreas[0].AxisX.LineColor = Color.Transparent;
             chart3.ChartAreas[0].AxisY.LineColor = Color.Transparent;
+
             foreach (var series in chart3.Series)
             {
                 series.Points.Clear();
             }
-            if (DateTime.IsLeapYear(nam))
+
+            int daysInMonth = DateTime.DaysInMonth(nam, thang);
+
+            for (int i = 1; i <= daysInMonth; i++)
             {
-                switch (thang)
-                {
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                    case 8:
-                    case 10:
-                    case 12:
-                        for (int i = 1; i <= 31; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                        }
-                        break;
-                    case 2:
-                        for (int i = 1; i <= 29; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                        }
-                        break;
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11:
-                        for (int i = 1; i <= 30; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                        }
-                        break;
-                }
-            }
-            else
-            {
-                switch (thang)
-                {
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                    case 8:
-                    case 10:
-                    case 12:
-                        for (int i = 1; i <= 31; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                        }
-                        break;
-                    case 2:
-                        for (int i = 1; i <= 28; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                        }
-                        break;
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11:
-                        for (int i = 1; i <= 30; i++)
-                        {
-                            chart3.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                            chart3.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + ""));
-                            if (hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "") != 0)
-                                chart3.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotNgay(i + "", thang + "", nam + "").ToString();
-                        }
-                        break;
-                }
+                var roomRevenue = hd.TongTienPhongTrongMotNgay(i.ToString(), thang.ToString(), nam.ToString());
+                var serviceRevenue = hd.TongTienDichVuTrongMotNgay(i.ToString(), thang.ToString(), nam.ToString());
+
+                chart3.Series["Series1"].Points.AddXY(i, roomRevenue);
+                chart3.Series["Series2"].Points.AddXY(i, serviceRevenue);
+
+                if (roomRevenue != 0)
+                    chart3.Series["Series1"].Points[i - 1].Label = roomRevenue.ToString();
+                if (serviceRevenue != 0)
+                    chart3.Series["Series2"].Points[i - 1].Label = serviceRevenue.ToString();
             }
         }
 
         void BieuDoThongKeNamLoad(int nam)
         {
-            Title title4 = new Title();
-            title4.Font = fontTitle;
-            title4.Text = "Biểu đồ thống kê tiền phòng và dịch vụ trong năm " + nam;
-            try
-            {
-                chart4.Titles.RemoveAt(0);
-            }
-            catch (Exception) { }
+            Title title4 = new Title { Font = fontTitle, Text = $"Biểu đồ thống kê tiền phòng và dịch vụ trong năm {nam}" };
+            try { chart4.Titles.RemoveAt(0); } catch (Exception) { }
             chart4.Titles.Add(title4);
             chart4.Series["Series1"].LegendText = "Tiền phòng";
             chart4.Series["Series2"].LegendText = "Tiền dịch vụ";
@@ -251,29 +145,35 @@ namespace GUI.GUI_THONGKE
             chart4.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.WhiteSmoke;
             chart4.ChartAreas[0].AxisX.LineColor = Color.Transparent;
             chart4.ChartAreas[0].AxisY.LineColor = Color.Transparent;
+
             foreach (var series in chart4.Series)
             {
                 series.Points.Clear();
             }
+
             for (int i = 1; i <= 12; i++)
             {
-                chart4.Series["Series1"].Points.AddXY(i, hd.TongTienPhongTrongMotThang(i + "", nam + ""));
-                if (hd.TongTienPhongTrongMotThang(i + "", nam + "") != 0)
-                    chart4.Series["Series1"].Points[i - 1].Label = hd.TongTienPhongTrongMotThang(i + "", nam + "").ToString();
-                chart4.Series["Series2"].Points.AddXY(i, hd.TongTienDichVuTrongMotThang(i + "", nam + ""));
-                if (hd.TongTienDichVuTrongMotThang(i + "", nam + "") != 0)
-                    chart4.Series["Series2"].Points[i - 1].Label = hd.TongTienDichVuTrongMotThang(i + "", nam + "").ToString();
+                var roomRevenue = hd.TongTienPhongTrongMotThang(i.ToString(), nam.ToString());
+                var serviceRevenue = hd.TongTienDichVuTrongMotThang(i.ToString(), nam.ToString());
+
+                chart4.Series["Series1"].Points.AddXY(i, roomRevenue);
+                chart4.Series["Series2"].Points.AddXY(i, serviceRevenue);
+
+                if (roomRevenue != 0)
+                    chart4.Series["Series1"].Points[i - 1].Label = roomRevenue.ToString();
+                if (serviceRevenue != 0)
+                    chart4.Series["Series2"].Points[i - 1].Label = serviceRevenue.ToString();
             }
         }
 
         private void dateTimePicker5_ValueChanged(object sender, EventArgs e)
         {
-            BieuDoThongKeThangLoad(int.Parse(dateTimePicker5.Value.ToString("MM")), int.Parse(dateTimePicker5.Value.ToString("yyyy")));
+            BieuDoThongKeThangLoad(dateTimePicker5.Value.Month, dateTimePicker5.Value.Year);
         }
 
         private void dateTimePicker6_ValueChanged(object sender, EventArgs e)
         {
-            BieuDoThongKeNamLoad(int.Parse(dateTimePicker6.Value.ToString("yyyy")));
+            BieuDoThongKeNamLoad(dateTimePicker6.Value.Year);
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)

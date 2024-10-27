@@ -28,7 +28,8 @@ namespace GUI.GUI_STAFF
             InitializeComponent();
             this.KeyDown += new KeyEventHandler(StaffForm_KeyDown);
             this.KeyPreview = true;
-            txtMaNV.Click += TxtMaNV_Click;
+            //txtMaNV.Click += TxtMaNV_Click;
+            txtMaNV.TextChanged += TxtMaNV_TextChanged;
             txtTenNV.TextChanged += OtherFields_TextChanged;
             cbGioiTinh.TextChanged += OtherFields_TextChanged;
             cbChucVu.TextChanged += OtherFields_TextChanged;
@@ -42,9 +43,10 @@ namespace GUI.GUI_STAFF
             onLoad();
         }
 
-        private void TxtMaNV_Click(object sender, EventArgs e)
+        private void TxtMaNV_TextChanged(object sender, EventArgs e)
         {
-            SetOtherFieldsEnable(false);
+            bool isMaNVNotEmpty = !string.IsNullOrEmpty(txtMaNV.Text);
+            SetOtherFieldsEnable(!isMaNVNotEmpty);
         }
 
         private void OtherFields_TextChanged(object sender, EventArgs e)

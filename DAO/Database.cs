@@ -17,7 +17,7 @@ namespace DAO
         // Tập hợp dữ liệu
         DataSet ds;
 
-        public string serverName = @"iris523.database.windows.net";
+        public string serverName = @"IRIS";
         public string dbName = "QLKS";
         // public string userName = "nhom8";
         // public string password = "Gohomeafter10pm";

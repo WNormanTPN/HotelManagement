@@ -14,6 +14,7 @@ namespace GUI
             InitializeComponent();
         }
 
+        private string code;
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
         {
@@ -84,7 +85,7 @@ namespace GUI
 
                     Random random = new Random();
                     int n = random.Next(0, 1000000);
-                    string code = n.ToString("D6");
+                    code = n.ToString("D6");
 
                     string subject = "Verification Code";
                     string messageBody = $"Dear Phan Phước Vinh,\r\n\r\nThis is your verification code:\r\n{code}\r\n\r\nBest regards,\r\nLuxury Hotel.";
@@ -106,5 +107,37 @@ namespace GUI
             }
         }
 
+        private void btnXacNhan_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(code))
+            {
+                MessageBoxDialog message = new MessageBoxDialog();
+                message.ShowDialog("Lỗi", "", "Vui lòng nhấn nút 'Gửi mã xác nhận' trước khi xác nhận", MessageBoxDialog.ERROR, MessageBoxDialog.YES, "OK", "", "");
+                return;
+            }
+            if(txtMa.Text == code)
+            {
+                if(string.IsNullOrEmpty(txtMKMoi.Text))
+                {
+                    MessageBoxDialog message = new MessageBoxDialog();
+                    message.ShowDialog("Lỗi", "", "Vui lòng nhập mật khẩu mới", MessageBoxDialog.ERROR, MessageBoxDialog.YES, "OK", "", "");
+                    return;
+                }
+                TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+                TaiKhoanDTO tkDTO = tkBUS.GetTK(txtTK.Text);
+                tkBUS.SuaMatKhau(tkDTO.TaiKhoan, txtMKMoi.Text);
+                MessageBoxDialog message1 = new MessageBoxDialog();
+                message1.ShowDialog("Thành công", "", "Đổi mật khẩu thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "OK", "", "");
+
+                txtTK.Text = "";
+                txtMKMoi.Text = "";
+                txtMa.Text = "";
+            }
+            else
+            {
+                MessageBoxDialog message = new MessageBoxDialog();
+                message.ShowDialog("Lỗi", "", "Mã xác nhận không chính xác", MessageBoxDialog.ERROR, MessageBoxDialog.YES, "OK", "", "");
+            }
+        }
     }
 }

@@ -34,19 +34,19 @@
             this.panelRounded1 = new GUI.GUI_COMPONENT.PanelRounded();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.buttonRounded4 = new GUI.GUI_COMPONENT.ButtonRounded();
+            this.txtMKMoi = new System.Windows.Forms.TextBox();
+            this.btnHienMK = new GUI.GUI_COMPONENT.ButtonRounded();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonRounded2 = new GUI.GUI_COMPONENT.ButtonRounded();
             this.buttonRounded1 = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnLogin = new GUI.GUI_COMPONENT.ButtonRounded();
+            this.btnXacNhan = new GUI.GUI_COMPONENT.ButtonRounded();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.buttonRounded3 = new GUI.GUI_COMPONENT.ButtonRounded();
+            this.txtMa = new System.Windows.Forms.TextBox();
+            this.btnGuiMa = new GUI.GUI_COMPONENT.ButtonRounded();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTK = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -131,7 +131,7 @@
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.tableLayoutPanel1);
-            this.panel2.Controls.Add(this.btnLogin);
+            this.panel2.Controls.Add(this.btnXacNhan);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label1);
@@ -145,44 +145,44 @@
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.Controls.Add(this.textBox3);
-            this.panel5.Controls.Add(this.buttonRounded4);
+            this.panel5.Controls.Add(this.txtMKMoi);
+            this.panel5.Controls.Add(this.btnHienMK);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Location = new System.Drawing.Point(10, 193);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(385, 32);
             this.panel5.TabIndex = 3;
             // 
-            // textBox3
+            // txtMKMoi
             // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(142, 0);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(196, 30);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.UseSystemPasswordChar = true;
+            this.txtMKMoi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMKMoi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMKMoi.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMKMoi.Location = new System.Drawing.Point(142, 0);
+            this.txtMKMoi.Name = "txtMKMoi";
+            this.txtMKMoi.Size = new System.Drawing.Size(196, 30);
+            this.txtMKMoi.TabIndex = 2;
+            this.txtMKMoi.UseSystemPasswordChar = true;
             // 
-            // buttonRounded4
+            // btnHienMK
             // 
-            this.buttonRounded4.BackColor = System.Drawing.Color.Transparent;
-            this.buttonRounded4.BackgroundColor = System.Drawing.Color.Transparent;
-            this.buttonRounded4.BackgroundImage = global::GUI.Properties.Resources.hien;
-            this.buttonRounded4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonRounded4.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.buttonRounded4.BorderRadius = 40;
-            this.buttonRounded4.BorderSize = 0;
-            this.buttonRounded4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonRounded4.FlatAppearance.BorderSize = 0;
-            this.buttonRounded4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRounded4.ForeColor = System.Drawing.Color.White;
-            this.buttonRounded4.ForegroundColor = System.Drawing.Color.White;
-            this.buttonRounded4.Location = new System.Drawing.Point(338, 0);
-            this.buttonRounded4.Name = "buttonRounded4";
-            this.buttonRounded4.Size = new System.Drawing.Size(47, 32);
-            this.buttonRounded4.TabIndex = 1;
-            this.buttonRounded4.UseVisualStyleBackColor = false;
+            this.btnHienMK.BackColor = System.Drawing.Color.Transparent;
+            this.btnHienMK.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnHienMK.BackgroundImage = global::GUI.Properties.Resources.hien;
+            this.btnHienMK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHienMK.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnHienMK.BorderRadius = 40;
+            this.btnHienMK.BorderSize = 0;
+            this.btnHienMK.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnHienMK.FlatAppearance.BorderSize = 0;
+            this.btnHienMK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHienMK.ForeColor = System.Drawing.Color.White;
+            this.btnHienMK.ForegroundColor = System.Drawing.Color.White;
+            this.btnHienMK.Location = new System.Drawing.Point(338, 0);
+            this.btnHienMK.Name = "btnHienMK";
+            this.btnHienMK.Size = new System.Drawing.Size(47, 32);
+            this.btnHienMK.TabIndex = 1;
+            this.btnHienMK.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -253,66 +253,68 @@
             this.buttonRounded1.UseVisualStyleBackColor = false;
             this.buttonRounded1.Click += new System.EventHandler(this.buttonRounded1_Click);
             // 
-            // btnLogin
+            // btnXacNhan
             // 
-            this.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnLogin.BackColor = System.Drawing.Color.Teal;
-            this.btnLogin.BackgroundColor = System.Drawing.Color.Teal;
-            this.btnLogin.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnLogin.BorderRadius = 40;
-            this.btnLogin.BorderSize = 0;
-            this.btnLogin.FlatAppearance.BorderSize = 0;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.ForegroundColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(10, 274);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(385, 45);
-            this.btnLogin.TabIndex = 3;
-            this.btnLogin.Text = "Xác nhận";
-            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnXacNhan.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnXacNhan.BackColor = System.Drawing.Color.Teal;
+            this.btnXacNhan.BackgroundColor = System.Drawing.Color.Teal;
+            this.btnXacNhan.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnXacNhan.BorderRadius = 40;
+            this.btnXacNhan.BorderSize = 0;
+            this.btnXacNhan.FlatAppearance.BorderSize = 0;
+            this.btnXacNhan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXacNhan.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXacNhan.ForeColor = System.Drawing.Color.White;
+            this.btnXacNhan.ForegroundColor = System.Drawing.Color.White;
+            this.btnXacNhan.Location = new System.Drawing.Point(10, 274);
+            this.btnXacNhan.Name = "btnXacNhan";
+            this.btnXacNhan.Size = new System.Drawing.Size(385, 45);
+            this.btnXacNhan.TabIndex = 3;
+            this.btnXacNhan.Text = "Xác nhận";
+            this.btnXacNhan.UseVisualStyleBackColor = false;
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.textBox2);
-            this.panel4.Controls.Add(this.buttonRounded3);
+            this.panel4.Controls.Add(this.txtMa);
+            this.panel4.Controls.Add(this.btnGuiMa);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Location = new System.Drawing.Point(10, 142);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(385, 32);
             this.panel4.TabIndex = 2;
             // 
-            // textBox2
+            // txtMa
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(194, 0);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(112, 30);
-            this.textBox2.TabIndex = 3;
+            this.txtMa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMa.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMa.Location = new System.Drawing.Point(194, 0);
+            this.txtMa.Name = "txtMa";
+            this.txtMa.Size = new System.Drawing.Size(112, 30);
+            this.txtMa.TabIndex = 3;
             // 
-            // buttonRounded3
+            // btnGuiMa
             // 
-            this.buttonRounded3.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.buttonRounded3.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.buttonRounded3.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.buttonRounded3.BorderRadius = 10;
-            this.buttonRounded3.BorderSize = 0;
-            this.buttonRounded3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonRounded3.FlatAppearance.BorderSize = 0;
-            this.buttonRounded3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRounded3.ForeColor = System.Drawing.Color.White;
-            this.buttonRounded3.ForegroundColor = System.Drawing.Color.White;
-            this.buttonRounded3.Location = new System.Drawing.Point(306, 0);
-            this.buttonRounded3.Name = "buttonRounded3";
-            this.buttonRounded3.Size = new System.Drawing.Size(79, 32);
-            this.buttonRounded3.TabIndex = 2;
-            this.buttonRounded3.Text = "Gửi mã";
-            this.buttonRounded3.UseVisualStyleBackColor = false;
+            this.btnGuiMa.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnGuiMa.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnGuiMa.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnGuiMa.BorderRadius = 10;
+            this.btnGuiMa.BorderSize = 0;
+            this.btnGuiMa.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnGuiMa.FlatAppearance.BorderSize = 0;
+            this.btnGuiMa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuiMa.ForeColor = System.Drawing.Color.White;
+            this.btnGuiMa.ForegroundColor = System.Drawing.Color.White;
+            this.btnGuiMa.Location = new System.Drawing.Point(306, 0);
+            this.btnGuiMa.Name = "btnGuiMa";
+            this.btnGuiMa.Size = new System.Drawing.Size(79, 32);
+            this.btnGuiMa.TabIndex = 2;
+            this.btnGuiMa.Text = "Gửi mã";
+            this.btnGuiMa.UseVisualStyleBackColor = false;
+            this.btnGuiMa.Click += new System.EventHandler(this.buttonRounded3_Click);
             // 
             // label3
             // 
@@ -329,22 +331,22 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.txtTK);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Location = new System.Drawing.Point(10, 92);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(385, 32);
             this.panel3.TabIndex = 1;
             // 
-            // textBox1
+            // txtTK
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(142, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(243, 30);
-            this.textBox1.TabIndex = 1;
+            this.txtTK.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTK.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTK.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTK.Location = new System.Drawing.Point(142, 0);
+            this.txtTK.Name = "txtTK";
+            this.txtTK.Size = new System.Drawing.Size(243, 30);
+            this.txtTK.TabIndex = 1;
             // 
             // label2
             // 
@@ -420,16 +422,16 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private GUI_COMPONENT.ButtonRounded buttonRounded2;
         private GUI_COMPONENT.ButtonRounded buttonRounded1;
-        private GUI_COMPONENT.ButtonRounded btnLogin;
+        private GUI_COMPONENT.ButtonRounded btnXacNhan;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTK;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private GUI_COMPONENT.ButtonRounded buttonRounded3;
-        private System.Windows.Forms.TextBox textBox3;
-        private GUI_COMPONENT.ButtonRounded buttonRounded4;
+        private System.Windows.Forms.TextBox txtMa;
+        private GUI_COMPONENT.ButtonRounded btnGuiMa;
+        private System.Windows.Forms.TextBox txtMKMoi;
+        private GUI_COMPONENT.ButtonRounded btnHienMK;
     }
 }

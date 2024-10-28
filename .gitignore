@@ -400,3 +400,4 @@ FodyWeavers.xsd
 
 # API keys and other secrets
 .env
+gmailAPI.json

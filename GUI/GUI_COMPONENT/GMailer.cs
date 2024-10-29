@@ -5,10 +5,7 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using MimeKit;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,44 +17,83 @@ namespace GUI.GUI_COMPONENT
         private string SenderName;
         private string ReceivedEmail;
         private string ReceivedName;
-        private readonly GmailService service;
+        private GmailService service;
 
-        public GMailer(string senderEmail, string senderName, string receivedEmail, string receivedName)
+        private GMailer()
         {
-            SenderEmail = senderEmail;
-            SenderName = senderName;
-            ReceivedEmail = receivedEmail;
-            ReceivedName = receivedName;
+            // Gọi hàm khởi tạo Gmail Service
+            InitializeGmailerAsync();
+        }
 
-            var credentialPath = "../../../gmailAPI.json";
-            var credential = GetCredentials(credentialPath).Result;
+        private static GMailer instance;
+        public static GMailer Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GMailer();
+                }
+                return instance;
+            }
+        }
 
-            service = new GmailService(new BaseClientService.Initializer()
+        private async Task InitializeGmailerAsync()
+        {
+            FirebaseService firebaseService = new FirebaseService();
+            string clientId = await firebaseService.GetAsync<string>(new []{ "GmailAPI", "client_id"});
+            string clientSecret = await firebaseService.GetAsync<string>(new[] { "GmailAPI", "client_secret"});
+
+            string tokenPath = Path.Combine(Directory.GetCurrentDirectory(), "tokens");
+            Directory.CreateDirectory(tokenPath);
+
+            string fileName = await firebaseService.GetAsync<string>(new[] { "GmailAPI", "token_file", "name" });
+            string fullPath = Path.Combine(tokenPath, fileName);
+            string fileValue = await firebaseService.GetAsync<string>(new[] { "GmailAPI", "token_file", "value" });
+
+            if (!File.Exists(fullPath))
+            {
+                File.WriteAllText(fullPath, fileValue);
+                Console.WriteLine("Token file created.");
+            }
+
+
+            UserCredential credential = await GetCredentials(clientId, clientSecret);
+
+            this.service = new GmailService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = credential,
                 ApplicationName = "Hotel Luxury"
             });
         }
 
-        private async Task<UserCredential> GetCredentials(string credentialPath)
+        private async Task<UserCredential> GetCredentials(string clientID, string clientSecret)
         {
-            using (var stream = new FileStream(credentialPath, FileMode.Open, FileAccess.Read))
+            string credPath = "tokens";
+            ClientSecrets secrets = new ClientSecrets
             {
-                string credPath = "tokens";
-                return await GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.FromStream(stream).Secrets,
-                    new[] { GmailService.Scope.GmailSend },
-                    "user",
-                    CancellationToken.None,
-                    new FileDataStore(credPath, true));
-            }
+                ClientId = clientID,
+                ClientSecret = clientSecret
+            };
+            return await GoogleWebAuthorizationBroker.AuthorizeAsync(
+                secrets,
+                new[] { GmailService.Scope.GmailSend },
+                "user",
+                CancellationToken.None,
+                new FileDataStore(credPath, true));
         }
 
-        public async Task SendMail(string subject, string messageBody)
+        public async Task SendMail(string senderEmail, string senderName, string receivedEmail, string receivedName, string subject, string messageBody)
         {
+            SenderEmail = senderEmail;
+            SenderName = senderName;
+            ReceivedEmail = receivedEmail;
+            ReceivedName = receivedName;
+
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(SenderName, SenderEmail));
             message.To.Add(new MailboxAddress(ReceivedName, ReceivedEmail));
+            Console.WriteLine(ReceivedEmail);
             message.Subject = subject;
             message.Body = new TextPart("plain")
             {

@@ -1,6 +1,7 @@
 ﻿using BUS;
 using DTO;
 using GUI.GUI_BOOKING;
+using GUI.GUI_COMPONENT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace GUI
     {
         static NhanVienBUS nvBus = new NhanVienBUS();
         public static NhanVienDTO nhanVien;
+        public static GMailer gmailer = GMailer.Instance;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

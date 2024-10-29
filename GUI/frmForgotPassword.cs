@@ -81,8 +81,6 @@ namespace GUI
                 NhanVienDTO nvDTO = nvBUS.GetNV(tkDTO.MaNV);
                 try
                 {
-                    GMailer gmailer = new GMailer("luxury.hotel.bot@gmail.com", "Luxury Hotel", "vinhstarmcpc@gmail.com", "Phan Phước Vinh");
-
                     Random random = new Random();
                     int n = random.Next(0, 1000000);
                     code = n.ToString("D6");
@@ -90,14 +88,14 @@ namespace GUI
                     string subject = "Verification Code";
                     string messageBody = $"Dear Phan Phước Vinh,\r\n\r\nThis is your verification code:\r\n{code}\r\n\r\nBest regards,\r\nLuxury Hotel.";
 
-                    await gmailer.SendMail(subject, messageBody);
+                    await Program.gmailer.SendMail("luxury.hotel.bot@gmail.com", "Luxury Hotel", nvDTO.Email, nvDTO.TenNV, subject, messageBody);
 
-                    Console.WriteLine("Email đã được gửi thành công!");
+                    MessageBox.Show("Email đã được gửi thành công!");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
-                    Console.WriteLine("Gửi email thất bại: " + ex.Message);
+                    MessageBox.Show("Gửi email thất bại: " + ex.Message);
                 }
             }
             else

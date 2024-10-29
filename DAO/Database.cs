@@ -18,13 +18,13 @@ namespace DAO
         DataSet ds;
 
 
-        public string serverName = @"NORMAN";
+        public string serverName = @"iris523.database.windows.net";
         public string dbName = "QLKS";
         public string userName = "nhom8";
         public string password = "Gohomeafter10pm";
         public Database()
         {
-            string stringConnect = "Server=" + serverName + "; Database=" + dbName + ";Integrated Security=True";// + "; User Id=" + userName + "; Password=" + password + ";"; 
+            string stringConnect = "Server=" + serverName + "; Database=" + dbName + "; User Id=" + userName + "; Password=" + password + ";"; 
             conn = new SqlConnection(stringConnect);
         }
 

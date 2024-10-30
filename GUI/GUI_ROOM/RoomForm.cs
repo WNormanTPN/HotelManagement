@@ -426,8 +426,9 @@ namespace GUI.GUI_ROOM
             {
                 if (i % 2 == 0)
                 {
-                    tbPhong.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(249,249,249);
-                } else
+                    tbPhong.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(249, 249, 249);
+                }
+                else
                 {
                     tbPhong.Rows[i].DefaultCellStyle.BackColor = Color.White;
                 }
@@ -449,127 +450,35 @@ namespace GUI.GUI_ROOM
             }
         }
 
-        private void txtMaP_Enter(object sender, EventArgs e)
+        private void txtMaP_TextChanged(object sender, EventArgs e)
         {
-            txtTenP.BackColor = Color.Gray;
-            txtTenP.Clear();
-            txtTenP.Enabled = false;
-            cbLoaiP.BackColor = Color.Gray;
-            cbLoaiP.Enabled = false;
-            cbLoaiP.SelectedIndex = -1;
-            cbCTLP.BackColor = Color.Gray;
-            cbCTLP.Enabled = false;
-            cbCTLP.SelectedIndex = -1;
-            cbGiaP.BackColor = Color.Gray;
-            cbGiaP.Enabled = false;
-            cbGiaP.SelectedIndex = -1;
-            cbTinhTrang.BackColor = Color.Gray;
-            cbTinhTrang.Enabled = false;
-            cbTinhTrang.SelectedIndex = -1;
-            cbHienTrang.BackColor = Color.Gray;
-            cbHienTrang.Enabled = false;
-            cbHienTrang.SelectedIndex = -1;
+            bool isMaPEmpty = string.IsNullOrWhiteSpace(txtMaP.Text);
+            txtTenP.Enabled = isMaPEmpty;
+            cbLoaiP.Enabled = isMaPEmpty;
+            cbCTLP.Enabled = isMaPEmpty;
+            cbGiaP.Enabled = isMaPEmpty;
+            cbTinhTrang.Enabled = isMaPEmpty;
+            cbHienTrang.Enabled = isMaPEmpty;
+
         }
 
-        private void txtMaP_Leave(object sender, EventArgs e)
+        private void otherTextChanged(object sender, EventArgs e)
         {
-            txtTenP.BackColor = Color.White;
-            txtTenP.Enabled = true;
-            cbLoaiP.BackColor = Color.White;
-            cbLoaiP.Enabled = true;
-            cbCTLP.BackColor = Color.White;
-            cbCTLP.Enabled = true;
-            cbGiaP.BackColor = Color.White;
-            cbGiaP.Enabled = true;
-            cbTinhTrang.BackColor = Color.White;
-            cbTinhTrang.Enabled = true;
-            cbHienTrang.BackColor = Color.White;
-            cbHienTrang.Enabled = true;
+            bool isTenPEmpty = string.IsNullOrEmpty(txtTenP.Text);
+            if (isTenPEmpty == true &&
+                cbCTLP.Text == String.Empty &&
+                cbGiaP.Text == String.Empty &&
+                cbLoaiP.Text == String.Empty &&
+                cbHienTrang.Text == String.Empty &&
+                cbTinhTrang.Text == String.Empty)
+            {
+                txtMaP.Enabled = true;
+            }
+            else
+            {
+                txtMaP.Enabled = false;
+            }
         }
-
-        private void txtTenP_Enter(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.Gray;
-            txtMaP.Clear();
-            txtMaP.Enabled = false;
-        }
-
-        private void txtTenP_Leave(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.White;
-            
-            txtMaP.Enabled = true;
-        }
-
-        private void cbLoaiP_Enter(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.Gray;
-            txtMaP.Clear();
-            txtMaP.Enabled = false;
-        }
-
-        private void cbLoaiP_Leave(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.White;
-
-            txtMaP.Enabled = true;
-        }
-
-
-        private void cbCTLP_Enter(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.Gray;
-            txtMaP.Clear();
-            txtMaP.Enabled = false;
-        }
-
-        private void cbCTLP_Leave(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.White;
-
-            txtMaP.Enabled = true;
-        }
-
-        private void cbGiaP_Enter(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.Gray;
-            txtMaP.Clear();
-            txtMaP.Enabled = false;
-        }
-
-        private void cbGiaP_Leave(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.White;
-
-            txtMaP.Enabled = true;
-        }
-
-        private void cbTinhTrang_Enter(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.Gray;
-            txtMaP.Clear();
-            txtMaP.Enabled = false;
-        }
-
-        private void cbTinhTrang_Leave(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.White;
-
-            txtMaP.Enabled = true;
-        }
-
-        private void cbHienTrang_Enter(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.Gray;
-            txtMaP.Clear();
-            txtMaP.Enabled = false;
-        }
-
-        private void cbHienTrang_Leave(object sender, EventArgs e)
-        {
-            txtMaP.BackColor = Color.White;
-
-            txtMaP.Enabled = true;
-        }
+    
     }
 }

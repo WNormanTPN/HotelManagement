@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmForgotPassword));
             this.pnTop = new System.Windows.Forms.Panel();
             this.Title = new System.Windows.Forms.Label();
             this.btnClose = new GUI.GUI_COMPONENT.ButtonRounded();
@@ -389,6 +390,7 @@
             this.Controls.Add(this.panelRounded1);
             this.Controls.Add(this.pnTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmForgotPassword";
             this.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

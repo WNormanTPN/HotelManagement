@@ -29,41 +29,46 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QLKS_Form));
             this.pnTop = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbName = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbLogo = new System.Windows.Forms.Label();
+            this.picLogo = new System.Windows.Forms.PictureBox();
+            this.picMenu = new System.Windows.Forms.PictureBox();
             this.pnMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.pnHome = new System.Windows.Forms.Panel();
+            this.btnHome = new GUI.GUI_COMPONENT.ButtonRounded();
             this.pnRoom = new System.Windows.Forms.Panel();
+            this.btnRoom = new GUI.GUI_COMPONENT.ButtonRounded();
             this.pnService = new System.Windows.Forms.Panel();
+            this.btnService = new GUI.GUI_COMPONENT.ButtonRounded();
             this.pnCustomer = new System.Windows.Forms.Panel();
+            this.btnCustomer = new GUI.GUI_COMPONENT.ButtonRounded();
             this.pnStaff = new System.Windows.Forms.Panel();
+            this.btnStaff = new GUI.GUI_COMPONENT.ButtonRounded();
             this.pnRole = new System.Windows.Forms.Panel();
+            this.btnRole = new GUI.GUI_COMPONENT.ButtonRounded();
             this.pnBooking = new System.Windows.Forms.FlowLayoutPanel();
             this.pnBooking_Menu = new System.Windows.Forms.Panel();
+            this.btnBooking = new GUI.GUI_COMPONENT.ButtonRounded();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.btnBookingNew = new GUI.GUI_COMPONENT.ButtonRounded();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.btnListBooking = new GUI.GUI_COMPONENT.ButtonRounded();
             this.pnBill = new System.Windows.Forms.Panel();
+            this.btnBill = new GUI.GUI_COMPONENT.ButtonRounded();
             this.pnStatistic = new System.Windows.Forms.Panel();
+            this.btnStatistic = new GUI.GUI_COMPONENT.ButtonRounded();
             this.timerMenuTransition = new System.Windows.Forms.Timer(this.components);
             this.timerSliderBar = new System.Windows.Forms.Timer(this.components);
             this.pnContent = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lbName = new System.Windows.Forms.Label();
-            this.btnHome = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnRoom = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnService = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnCustomer = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnStaff = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnRole = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnBooking = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnBookingNew = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnListBooking = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnBill = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnStatistic = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picLogo = new System.Windows.Forms.PictureBox();
-            this.picMenu = new System.Windows.Forms.PictureBox();
             this.pnTop.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMenu)).BeginInit();
             this.pnMenu.SuspendLayout();
             this.pnHome.SuspendLayout();
             this.pnRoom.SuspendLayout();
@@ -77,10 +82,6 @@
             this.panel12.SuspendLayout();
             this.pnBill.SuspendLayout();
             this.pnStatistic.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // pnTop
@@ -96,6 +97,40 @@
             this.pnTop.Size = new System.Drawing.Size(1782, 53);
             this.pnTop.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lbName);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(1061, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(5);
+            this.panel1.Size = new System.Drawing.Size(721, 53);
+            this.panel1.TabIndex = 2;
+            // 
+            // lbName
+            // 
+            this.lbName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.Location = new System.Drawing.Point(5, 5);
+            this.lbName.Name = "lbName";
+            this.lbName.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.lbName.Size = new System.Drawing.Size(659, 43);
+            this.lbName.TabIndex = 1;
+            this.lbName.Text = "label1";
+            this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox1.Image = global::GUI.Properties.Resources.icons8_avatar_48__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(664, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(52, 43);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // lbLogo
             // 
             this.lbLogo.Dock = System.Windows.Forms.DockStyle.Left;
@@ -107,6 +142,29 @@
             this.lbLogo.TabIndex = 1;
             this.lbLogo.Text = "LUXURY HOTEL";
             this.lbLogo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // picLogo
+            // 
+            this.picLogo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picLogo.Image = global::GUI.Properties.Resources.hotel;
+            this.picLogo.Location = new System.Drawing.Point(57, 0);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(71, 53);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picLogo.TabIndex = 1;
+            this.picLogo.TabStop = false;
+            // 
+            // picMenu
+            // 
+            this.picMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picMenu.Image = global::GUI.Properties.Resources.icons8_menu_24;
+            this.picMenu.Location = new System.Drawing.Point(0, 0);
+            this.picMenu.Name = "picMenu";
+            this.picMenu.Size = new System.Drawing.Size(57, 53);
+            this.picMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picMenu.TabIndex = 0;
+            this.picMenu.TabStop = false;
+            this.picMenu.Click += new System.EventHandler(this.picMenu_Click);
             // 
             // pnMenu
             // 
@@ -137,149 +195,6 @@
             this.pnHome.Size = new System.Drawing.Size(304, 48);
             this.pnHome.TabIndex = 2;
             // 
-            // pnRoom
-            // 
-            this.pnRoom.Controls.Add(this.btnRoom);
-            this.pnRoom.Location = new System.Drawing.Point(8, 56);
-            this.pnRoom.Margin = new System.Windows.Forms.Padding(0);
-            this.pnRoom.Name = "pnRoom";
-            this.pnRoom.Size = new System.Drawing.Size(304, 48);
-            this.pnRoom.TabIndex = 5;
-            // 
-            // pnService
-            // 
-            this.pnService.Controls.Add(this.btnService);
-            this.pnService.Location = new System.Drawing.Point(8, 104);
-            this.pnService.Margin = new System.Windows.Forms.Padding(0);
-            this.pnService.Name = "pnService";
-            this.pnService.Size = new System.Drawing.Size(304, 48);
-            this.pnService.TabIndex = 6;
-            // 
-            // pnCustomer
-            // 
-            this.pnCustomer.Controls.Add(this.btnCustomer);
-            this.pnCustomer.Location = new System.Drawing.Point(8, 152);
-            this.pnCustomer.Margin = new System.Windows.Forms.Padding(0);
-            this.pnCustomer.Name = "pnCustomer";
-            this.pnCustomer.Size = new System.Drawing.Size(304, 48);
-            this.pnCustomer.TabIndex = 5;
-            // 
-            // pnStaff
-            // 
-            this.pnStaff.Controls.Add(this.btnStaff);
-            this.pnStaff.Location = new System.Drawing.Point(8, 200);
-            this.pnStaff.Margin = new System.Windows.Forms.Padding(0);
-            this.pnStaff.Name = "pnStaff";
-            this.pnStaff.Size = new System.Drawing.Size(304, 48);
-            this.pnStaff.TabIndex = 4;
-            // 
-            // pnRole
-            // 
-            this.pnRole.Controls.Add(this.btnRole);
-            this.pnRole.Location = new System.Drawing.Point(8, 248);
-            this.pnRole.Margin = new System.Windows.Forms.Padding(0);
-            this.pnRole.Name = "pnRole";
-            this.pnRole.Size = new System.Drawing.Size(304, 48);
-            this.pnRole.TabIndex = 8;
-            // 
-            // pnBooking
-            // 
-            this.pnBooking.Controls.Add(this.pnBooking_Menu);
-            this.pnBooking.Controls.Add(this.panel11);
-            this.pnBooking.Controls.Add(this.panel12);
-            this.pnBooking.Location = new System.Drawing.Point(8, 296);
-            this.pnBooking.Margin = new System.Windows.Forms.Padding(0);
-            this.pnBooking.Name = "pnBooking";
-            this.pnBooking.Size = new System.Drawing.Size(304, 48);
-            this.pnBooking.TabIndex = 8;
-            // 
-            // pnBooking_Menu
-            // 
-            this.pnBooking_Menu.Controls.Add(this.btnBooking);
-            this.pnBooking_Menu.Location = new System.Drawing.Point(0, 0);
-            this.pnBooking_Menu.Margin = new System.Windows.Forms.Padding(0);
-            this.pnBooking_Menu.Name = "pnBooking_Menu";
-            this.pnBooking_Menu.Size = new System.Drawing.Size(304, 48);
-            this.pnBooking_Menu.TabIndex = 5;
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.btnBookingNew);
-            this.panel11.Location = new System.Drawing.Point(0, 48);
-            this.panel11.Margin = new System.Windows.Forms.Padding(0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(304, 48);
-            this.panel11.TabIndex = 8;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.btnListBooking);
-            this.panel12.Location = new System.Drawing.Point(0, 96);
-            this.panel12.Margin = new System.Windows.Forms.Padding(0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(304, 48);
-            this.panel12.TabIndex = 9;
-            // 
-            // pnBill
-            // 
-            this.pnBill.Controls.Add(this.btnBill);
-            this.pnBill.Location = new System.Drawing.Point(8, 344);
-            this.pnBill.Margin = new System.Windows.Forms.Padding(0);
-            this.pnBill.Name = "pnBill";
-            this.pnBill.Size = new System.Drawing.Size(304, 48);
-            this.pnBill.TabIndex = 7;
-            // 
-            // pnStatistic
-            // 
-            this.pnStatistic.Controls.Add(this.btnStatistic);
-            this.pnStatistic.Location = new System.Drawing.Point(8, 392);
-            this.pnStatistic.Margin = new System.Windows.Forms.Padding(0);
-            this.pnStatistic.Name = "pnStatistic";
-            this.pnStatistic.Size = new System.Drawing.Size(304, 48);
-            this.pnStatistic.TabIndex = 6;
-            // 
-            // timerMenuTransition
-            // 
-            this.timerMenuTransition.Interval = 15;
-            this.timerMenuTransition.Tick += new System.EventHandler(this.timerMenuTransition_Tick);
-            // 
-            // timerSliderBar
-            // 
-            this.timerSliderBar.Interval = 1;
-            this.timerSliderBar.Tick += new System.EventHandler(this.timerSliderBar_Tick);
-            // 
-            // pnContent
-            // 
-            this.pnContent.BackColor = System.Drawing.Color.White;
-            this.pnContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContent.Location = new System.Drawing.Point(320, 53);
-            this.pnContent.Name = "pnContent";
-            this.pnContent.Size = new System.Drawing.Size(1462, 789);
-            this.pnContent.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.lbName);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(1061, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(721, 53);
-            this.panel1.TabIndex = 2;
-            // 
-            // lbName
-            // 
-            this.lbName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(5, 5);
-            this.lbName.Name = "lbName";
-            this.lbName.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.lbName.Size = new System.Drawing.Size(659, 43);
-            this.lbName.TabIndex = 1;
-            this.lbName.Text = "label1";
-            this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // btnHome
             // 
             this.btnHome.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -305,6 +220,15 @@
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
+            // pnRoom
+            // 
+            this.pnRoom.Controls.Add(this.btnRoom);
+            this.pnRoom.Location = new System.Drawing.Point(8, 56);
+            this.pnRoom.Margin = new System.Windows.Forms.Padding(0);
+            this.pnRoom.Name = "pnRoom";
+            this.pnRoom.Size = new System.Drawing.Size(304, 48);
+            this.pnRoom.TabIndex = 5;
             // 
             // btnRoom
             // 
@@ -332,6 +256,15 @@
             this.btnRoom.UseVisualStyleBackColor = false;
             this.btnRoom.Click += new System.EventHandler(this.btnRoom_Click);
             // 
+            // pnService
+            // 
+            this.pnService.Controls.Add(this.btnService);
+            this.pnService.Location = new System.Drawing.Point(8, 104);
+            this.pnService.Margin = new System.Windows.Forms.Padding(0);
+            this.pnService.Name = "pnService";
+            this.pnService.Size = new System.Drawing.Size(304, 48);
+            this.pnService.TabIndex = 6;
+            // 
             // btnService
             // 
             this.btnService.BackColor = System.Drawing.Color.White;
@@ -357,6 +290,15 @@
             this.btnService.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnService.UseVisualStyleBackColor = false;
             this.btnService.Click += new System.EventHandler(this.btnService_Click);
+            // 
+            // pnCustomer
+            // 
+            this.pnCustomer.Controls.Add(this.btnCustomer);
+            this.pnCustomer.Location = new System.Drawing.Point(8, 152);
+            this.pnCustomer.Margin = new System.Windows.Forms.Padding(0);
+            this.pnCustomer.Name = "pnCustomer";
+            this.pnCustomer.Size = new System.Drawing.Size(304, 48);
+            this.pnCustomer.TabIndex = 5;
             // 
             // btnCustomer
             // 
@@ -384,6 +326,15 @@
             this.btnCustomer.UseVisualStyleBackColor = false;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
+            // pnStaff
+            // 
+            this.pnStaff.Controls.Add(this.btnStaff);
+            this.pnStaff.Location = new System.Drawing.Point(8, 200);
+            this.pnStaff.Margin = new System.Windows.Forms.Padding(0);
+            this.pnStaff.Name = "pnStaff";
+            this.pnStaff.Size = new System.Drawing.Size(304, 48);
+            this.pnStaff.TabIndex = 4;
+            // 
             // btnStaff
             // 
             this.btnStaff.BackColor = System.Drawing.Color.White;
@@ -409,6 +360,15 @@
             this.btnStaff.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStaff.UseVisualStyleBackColor = false;
             this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
+            // 
+            // pnRole
+            // 
+            this.pnRole.Controls.Add(this.btnRole);
+            this.pnRole.Location = new System.Drawing.Point(8, 248);
+            this.pnRole.Margin = new System.Windows.Forms.Padding(0);
+            this.pnRole.Name = "pnRole";
+            this.pnRole.Size = new System.Drawing.Size(304, 48);
+            this.pnRole.TabIndex = 8;
             // 
             // btnRole
             // 
@@ -436,6 +396,26 @@
             this.btnRole.UseVisualStyleBackColor = false;
             this.btnRole.Click += new System.EventHandler(this.btnRole_Click);
             // 
+            // pnBooking
+            // 
+            this.pnBooking.Controls.Add(this.pnBooking_Menu);
+            this.pnBooking.Controls.Add(this.panel11);
+            this.pnBooking.Controls.Add(this.panel12);
+            this.pnBooking.Location = new System.Drawing.Point(8, 296);
+            this.pnBooking.Margin = new System.Windows.Forms.Padding(0);
+            this.pnBooking.Name = "pnBooking";
+            this.pnBooking.Size = new System.Drawing.Size(304, 48);
+            this.pnBooking.TabIndex = 8;
+            // 
+            // pnBooking_Menu
+            // 
+            this.pnBooking_Menu.Controls.Add(this.btnBooking);
+            this.pnBooking_Menu.Location = new System.Drawing.Point(0, 0);
+            this.pnBooking_Menu.Margin = new System.Windows.Forms.Padding(0);
+            this.pnBooking_Menu.Name = "pnBooking_Menu";
+            this.pnBooking_Menu.Size = new System.Drawing.Size(304, 48);
+            this.pnBooking_Menu.TabIndex = 5;
+            // 
             // btnBooking
             // 
             this.btnBooking.BackColor = System.Drawing.Color.White;
@@ -461,6 +441,15 @@
             this.btnBooking.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBooking.UseVisualStyleBackColor = false;
             this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.btnBookingNew);
+            this.panel11.Location = new System.Drawing.Point(0, 48);
+            this.panel11.Margin = new System.Windows.Forms.Padding(0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(304, 48);
+            this.panel11.TabIndex = 8;
             // 
             // btnBookingNew
             // 
@@ -488,6 +477,15 @@
             this.btnBookingNew.UseVisualStyleBackColor = false;
             this.btnBookingNew.Click += new System.EventHandler(this.btnBookingNew_Click);
             // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.btnListBooking);
+            this.panel12.Location = new System.Drawing.Point(0, 96);
+            this.panel12.Margin = new System.Windows.Forms.Padding(0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(304, 48);
+            this.panel12.TabIndex = 9;
+            // 
             // btnListBooking
             // 
             this.btnListBooking.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -513,6 +511,15 @@
             this.btnListBooking.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnListBooking.UseVisualStyleBackColor = false;
             this.btnListBooking.Click += new System.EventHandler(this.btnListBooking_Click);
+            // 
+            // pnBill
+            // 
+            this.pnBill.Controls.Add(this.btnBill);
+            this.pnBill.Location = new System.Drawing.Point(8, 344);
+            this.pnBill.Margin = new System.Windows.Forms.Padding(0);
+            this.pnBill.Name = "pnBill";
+            this.pnBill.Size = new System.Drawing.Size(304, 48);
+            this.pnBill.TabIndex = 7;
             // 
             // btnBill
             // 
@@ -540,6 +547,15 @@
             this.btnBill.UseVisualStyleBackColor = false;
             this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
             // 
+            // pnStatistic
+            // 
+            this.pnStatistic.Controls.Add(this.btnStatistic);
+            this.pnStatistic.Location = new System.Drawing.Point(8, 392);
+            this.pnStatistic.Margin = new System.Windows.Forms.Padding(0);
+            this.pnStatistic.Name = "pnStatistic";
+            this.pnStatistic.Size = new System.Drawing.Size(304, 48);
+            this.pnStatistic.TabIndex = 6;
+            // 
             // btnStatistic
             // 
             this.btnStatistic.BackColor = System.Drawing.Color.White;
@@ -566,39 +582,24 @@
             this.btnStatistic.UseVisualStyleBackColor = false;
             this.btnStatistic.Click += new System.EventHandler(this.btnStatistic_Click);
             // 
-            // pictureBox1
+            // timerMenuTransition
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = global::GUI.Properties.Resources.icons8_avatar_48__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(664, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(52, 43);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.timerMenuTransition.Interval = 15;
+            this.timerMenuTransition.Tick += new System.EventHandler(this.timerMenuTransition_Tick);
             // 
-            // picLogo
+            // timerSliderBar
             // 
-            this.picLogo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picLogo.Image = global::GUI.Properties.Resources.hotel;
-            this.picLogo.Location = new System.Drawing.Point(57, 0);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(71, 53);
-            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picLogo.TabIndex = 1;
-            this.picLogo.TabStop = false;
+            this.timerSliderBar.Interval = 1;
+            this.timerSliderBar.Tick += new System.EventHandler(this.timerSliderBar_Tick);
             // 
-            // picMenu
+            // pnContent
             // 
-            this.picMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picMenu.Image = global::GUI.Properties.Resources.icons8_menu_24;
-            this.picMenu.Location = new System.Drawing.Point(0, 0);
-            this.picMenu.Name = "picMenu";
-            this.picMenu.Size = new System.Drawing.Size(57, 53);
-            this.picMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picMenu.TabIndex = 0;
-            this.picMenu.TabStop = false;
-            this.picMenu.Click += new System.EventHandler(this.picMenu_Click);
+            this.pnContent.BackColor = System.Drawing.Color.White;
+            this.pnContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnContent.Location = new System.Drawing.Point(320, 53);
+            this.pnContent.Name = "pnContent";
+            this.pnContent.Size = new System.Drawing.Size(1462, 789);
+            this.pnContent.TabIndex = 2;
             // 
             // QLKS_Form
             // 
@@ -609,6 +610,7 @@
             this.Controls.Add(this.pnMenu);
             this.Controls.Add(this.pnTop);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QLKS_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phần mềm quản lý khách sạn";
@@ -616,6 +618,10 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QLKS_Form_FormClosing);
             this.Load += new System.EventHandler(this.QLKS_Form_Load);
             this.pnTop.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMenu)).EndInit();
             this.pnMenu.ResumeLayout(false);
             this.pnHome.ResumeLayout(false);
             this.pnRoom.ResumeLayout(false);
@@ -629,10 +635,6 @@
             this.panel12.ResumeLayout(false);
             this.pnBill.ResumeLayout(false);
             this.pnStatistic.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMenu)).EndInit();
             this.ResumeLayout(false);
 
         }

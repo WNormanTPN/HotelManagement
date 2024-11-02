@@ -61,10 +61,9 @@
             this.panelRounded1.BorderSize = 2;
             this.panelRounded1.Controls.Add(this.panelRounded2);
             this.panelRounded1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelRounded1.Location = new System.Drawing.Point(11, 12);
-            this.panelRounded1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelRounded1.Location = new System.Drawing.Point(15, 15);
             this.panelRounded1.Name = "panelRounded1";
-            this.panelRounded1.Size = new System.Drawing.Size(905, 221);
+            this.panelRounded1.Size = new System.Drawing.Size(1206, 272);
             this.panelRounded1.TabIndex = 0;
             this.panelRounded1.UnderlinedStyle = false;
             // 
@@ -78,10 +77,9 @@
             this.panelRounded2.Controls.Add(this.tableLayoutPanel1);
             this.panelRounded2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRounded2.Location = new System.Drawing.Point(0, 0);
-            this.panelRounded2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelRounded2.Name = "panelRounded2";
-            this.panelRounded2.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
-            this.panelRounded2.Size = new System.Drawing.Size(905, 221);
+            this.panelRounded2.Padding = new System.Windows.Forms.Padding(10);
+            this.panelRounded2.Size = new System.Drawing.Size(1206, 272);
             this.panelRounded2.TabIndex = 0;
             this.panelRounded2.UnderlinedStyle = false;
             // 
@@ -97,22 +95,21 @@
             this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 8);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(889, 205);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1186, 252);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // pictureBox4
             // 
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox4.Image = global::GUI.Properties.Resources.ks2;
-            this.pictureBox4.Location = new System.Drawing.Point(670, 4);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Location = new System.Drawing.Point(893, 5);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(215, 197);
+            this.pictureBox4.Size = new System.Drawing.Size(288, 242);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 3;
             this.pictureBox4.TabStop = false;
@@ -121,10 +118,10 @@
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox3.Image = global::GUI.Properties.Resources.abc;
-            this.pictureBox3.Location = new System.Drawing.Point(448, 4);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(597, 5);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(214, 197);
+            this.pictureBox3.Size = new System.Drawing.Size(286, 242);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
@@ -133,10 +130,10 @@
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Image = global::GUI.Properties.Resources.background1;
-            this.pictureBox2.Location = new System.Drawing.Point(226, 4);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(301, 5);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(214, 197);
+            this.pictureBox2.Size = new System.Drawing.Size(286, 242);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -145,10 +142,10 @@
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::GUI.Properties.Resources.ks;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(5, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(214, 197);
+            this.pictureBox1.Size = new System.Drawing.Size(286, 242);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -162,11 +159,10 @@
             // 
             this.panel1.Controls.Add(this.panelRounded3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(11, 233);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(15, 287);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(905, 386);
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.panel1.Size = new System.Drawing.Size(1206, 475);
             this.panel1.TabIndex = 1;
             // 
             // panelRounded3
@@ -179,11 +175,10 @@
             this.panelRounded3.Controls.Add(this.webView21);
             this.panelRounded3.Controls.Add(this.monthCalendar1);
             this.panelRounded3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRounded3.Location = new System.Drawing.Point(0, 8);
-            this.panelRounded3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelRounded3.Location = new System.Drawing.Point(0, 10);
             this.panelRounded3.Name = "panelRounded3";
-            this.panelRounded3.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
-            this.panelRounded3.Size = new System.Drawing.Size(905, 378);
+            this.panelRounded3.Padding = new System.Windows.Forms.Padding(10);
+            this.panelRounded3.Size = new System.Drawing.Size(1206, 465);
             this.panelRounded3.TabIndex = 0;
             this.panelRounded3.UnderlinedStyle = false;
             // 
@@ -193,10 +188,9 @@
             this.webView21.CreationProperties = null;
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
             this.webView21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webView21.Location = new System.Drawing.Point(235, 8);
-            this.webView21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.webView21.Location = new System.Drawing.Point(272, 10);
             this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(662, 362);
+            this.webView21.Size = new System.Drawing.Size(924, 445);
             this.webView21.Source = new System.Uri("https://maps.app.goo.gl/XHHvsur3nux8gfB66", System.UriKind.Absolute);
             this.webView21.TabIndex = 1;
             this.webView21.ZoomFactor = 1D;
@@ -205,23 +199,22 @@
             // 
             this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(1, 2);
             this.monthCalendar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.monthCalendar1.Location = new System.Drawing.Point(8, 8);
+            this.monthCalendar1.Location = new System.Drawing.Point(10, 10);
             this.monthCalendar1.Margin = new System.Windows.Forms.Padding(0);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
             // 
             // HomeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 631);
+            this.ClientSize = new System.Drawing.Size(1236, 777);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelRounded1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "HomeForm";
             this.Opacity = 0D;
-            this.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.Padding = new System.Windows.Forms.Padding(15);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Màn hình chính";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

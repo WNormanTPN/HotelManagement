@@ -27,7 +27,7 @@ namespace GUI.GUI_HOME
         {
             this.pictureBox1.Image = image[indexPic1];
             indexPic1++;
-            if (indexPic1 > 5)
+            if(indexPic1 > 5)
             {
                 indexPic1 = 0;
             }

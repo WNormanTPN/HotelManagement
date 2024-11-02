@@ -30,6 +30,7 @@
         {
             this.pnTop = new System.Windows.Forms.Panel();
             this.Title = new System.Windows.Forms.Label();
+            this.btnClose = new GUI.GUI_COMPONENT.ButtonRounded();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -90,12 +91,11 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.btnSave = new GUI.GUI_COMPONENT.ButtonRounded();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbMaKH = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSave = new GUI.GUI_COMPONENT.ButtonRounded();
-            this.btnClose = new GUI.GUI_COMPONENT.ButtonRounded();
             this.pnTop.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -159,6 +159,27 @@
             this.Title.TabIndex = 12;
             this.Title.Text = "KHÁCH HÀNG";
             this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnClose.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnClose.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnClose.BorderRadius = 0;
+            this.btnClose.BorderSize = 0;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.ForegroundColor = System.Drawing.Color.White;
+            this.btnClose.Image = global::GUI.Properties.Resources.icons8_close_24;
+            this.btnClose.Location = new System.Drawing.Point(689, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(1);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(45, 30);
+            this.btnClose.TabIndex = 11;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // panel1
             // 
@@ -938,6 +959,28 @@
             this.panel19.Size = new System.Drawing.Size(722, 36);
             this.panel19.TabIndex = 7;
             // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.Green;
+            this.btnSave.BackgroundColor = System.Drawing.Color.Green;
+            this.btnSave.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSave.BorderRadius = 40;
+            this.btnSave.BorderSize = 0;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.ForegroundColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(610, 0);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(112, 36);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "Lưu thay đổi";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
@@ -993,49 +1036,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã khách hàng:  ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.Green;
-            this.btnSave.BackgroundColor = System.Drawing.Color.Green;
-            this.btnSave.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnSave.BorderRadius = 40;
-            this.btnSave.BorderSize = 0;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.ForegroundColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(610, 0);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 36);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Lưu thay đổi";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnClose.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnClose.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnClose.BorderRadius = 0;
-            this.btnClose.BorderSize = 0;
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.ForegroundColor = System.Drawing.Color.White;
-            this.btnClose.Image = global::GUI.Properties.Resources.icons8_close_24;
-            this.btnClose.Location = new System.Drawing.Point(689, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(1);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(45, 30);
-            this.btnClose.TabIndex = 11;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmUpdateCustomer
             // 

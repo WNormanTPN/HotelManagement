@@ -14,11 +14,19 @@ namespace BUS
     public class NhanVienBUS
     {
         Database db;
+
+        /// <summary>
+        /// Initializes a new instance of the NhanVienBUS class and sets up the database connection.
+        /// </summary>
         public NhanVienBUS()
         {
             db = new Database();
         }
 
+        /// <summary>
+        /// Retrieves a list of active employees from the database
+        /// </summary>
+        /// <returns>A DataTable containing the list of active employee</returns>
         public DataTable getNhanVien()
         {
             string query = "select * from NHANVIEN where XuLy = 0";
@@ -26,12 +34,28 @@ namespace BUS
             return dt;
         }
 
+        /// <summary>
+        /// Retrieves a total count of employees from the database
+        /// </summary>
+        /// <returns>The total number of employees as an integer</returns>
         public int getNhanVienCount()
         {
             string query = "select count(*) from NHANVIEN";
             return db.ExecuteNonQuery_getInteger(query);
         }
 
+        /// <summary>
+        /// Add a new employee to the database
+        /// </summary>
+        /// <param name="manv">Employee ID</param>
+        /// <param name="tennv">Employee name</param>
+        /// <param name="gioitinh">Gender (0 for male, 1 for female)</param>
+        /// <param name="songayphep">Number of leave days</param>
+        /// <param name="chucvu">Position index</param>
+        /// <param name="ngaysinh">Date of birth</param>
+        /// <param name="ngayvaolam">Date of joining</param>
+        /// <param name="email">Email address</param>
+        /// <param name="luong1ngay">Daily salary</param>
         public void addNhanVien(string manv, string tennv, int gioitinh, int songayphep, int chucvu, DateTime ngaysinh, DateTime ngayvaolam, string email, int luong1ngay)
         {
             var ns = ngaysinh.ToString("yyyy-MM-dd");
@@ -40,6 +64,21 @@ namespace BUS
             db.ExecuteNonQuery(query);
         }
 
+        /// <summary>
+        /// Find employees based on the search criteria
+        /// </summary>
+        /// <param name="manv">Employee ID</param>
+        /// <param name="tennv">Employee name</param>
+        /// <param name="gioitinh">Gender (0 for male, 1 for female, -1 for any)</param>
+        /// <param name="chucvu">Position index (-1 for any)</param>
+        /// <param name="songayphep">Leave days criteria ("DƯỚI 10", "TRÊN 5", "TỪ 5 ĐẾN 10")</param>
+        /// <param name="luong1ngay">Daily salary criteria ("DƯỚI 1000", "TRÊN 500", "TỪ 500 ĐẾN 1000")</param>
+        /// <param name="ngaysinhtu">Date of birth from</param>
+        /// <param name="ngaysinhden">Date of birth to</param>
+        /// <param name="ngayvaolamtu">Date of joining from</param>
+        /// <param name="ngayvaolamden">Date of joining to</param>
+        /// <param name="email">Email address</param>
+        /// <returns>A DataTable containing the list of employees that match the search criteria</returns>
         public DataTable findNhanVien(string manv, string tennv, int gioitinh, int chucvu, string songayphep, string luong1ngay, DateTime ngaysinhtu, DateTime ngaysinhden, DateTime ngayvaolamtu, DateTime ngayvaolamden, string email)
         {
             var query = "select * from NHANVIEN where ";
@@ -117,12 +156,28 @@ namespace BUS
             return db.getList(query);
         }
 
+        /// <summary>
+        /// Marks an employee as deleted in the database by setting the xuly = 1
+        /// </summary>
+        /// <param name="manv">Employee ID</param>
         public void deleteNhanVien(string manv)
         {
             string query = string.Format("update NHANVIEN set xuLy = 1 where maNV = '{0}'", manv);
             db.ExecuteNonQuery(query);
         }
 
+        /// <summary>
+        /// Updates an employee's information in the database
+        /// </summary>
+        /// <param name="manv">Employee ID</param>
+        /// <param name="tennv">Employee name</param>
+        /// <param name="gioitinh">Gender (0 for male, 1 for famale)</param>
+        /// <param name="songayphep">Number of leave days</param>
+        /// <param name="chucvu">Position index</param>
+        /// <param name="ngaysinh">Date of birth</param>
+        /// <param name="ngayvaolam">Date of joining</param>
+        /// <param name="email">Email address</param>
+        /// <param name="luong1ngay">Daily salary</param>
         public void updateNhanVien(string manv, string tennv, int gioitinh, int songayphep, int chucvu, DateTime ngaysinh, DateTime ngayvaolam, string email, int luong1ngay)
         {
             var ns = ngaysinh.Year + "-" + ngaysinh.Month + "-" + ngaysinh.Day;

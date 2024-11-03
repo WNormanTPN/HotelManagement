@@ -23,6 +23,9 @@ namespace GUI.GUI_STAFF
 
         NhanVienBUS nhanVienBUS = new NhanVienBUS();
 
+        /// <summary>
+        /// Initializes a new instance of the StaffForm class, sets up event handlers, and loads initial data
+        /// </summary>
         public StaffForm()
         {
             InitializeComponent();
@@ -42,12 +45,22 @@ namespace GUI.GUI_STAFF
             onLoad();
         }
 
+        /// <summary>
+        /// Handles the TextChanged event for the txtMaNV TextBox to enable or disable other fields based on the employee ID input
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void TxtMaNV_TextChanged(object sender, EventArgs e)
         {
             bool isMaNVNotEmpty = !string.IsNullOrEmpty(txtMaNV.Text);
             SetOtherFieldsEnable(!isMaNVNotEmpty);
         }
 
+        /// <summary>
+        /// Handles the TextChanged event for various fields to enable or disable the txtMaNV TextBox based on the input in other fields
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void OtherFields_TextChanged(object sender, EventArgs e)
         {
             //CheckAndEnableMaNV();
@@ -72,6 +85,9 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Checks if all relevant fields are empty and enables or disables the txtMaNV TextBox accordingly
+        /// </summary>
         private void CheckAndEnableMaNV()
         {
             if (string.IsNullOrEmpty(txtTenNV.Text) &&
@@ -79,11 +95,11 @@ namespace GUI.GUI_STAFF
                 string.IsNullOrEmpty(cbChucVu.Text) &&
                 string.IsNullOrEmpty(txtEmail.Text) &&
                 string.IsNullOrEmpty(cbNgayNghiPhep.Text) &&
-                string.IsNullOrEmpty(cbLuong1Ngay.Text))
-                //dtpNgaySinhTu.Value == dtpNgaySinhTu.MinDate &&
-                //dtpNgaySinhDen.Value == dtpNgaySinhDen.MinDate &&
-                //dtpNgayVaoLamTu.Value == dtpNgayVaoLamDen.MinDate &&
-                //dtpNgayVaoLamDen.Value == dtpNgayVaoLamDen.MinDate)
+                string.IsNullOrEmpty(cbLuong1Ngay.Text) &&
+                dtpNgaySinhTu.Text == " " &&
+                dtpNgaySinhDen.Text == " " &&
+                dtpNgayVaoLamTu.Text == " " &&
+                dtpNgayVaoLamDen.Text == " ")
             {
                 txtMaNV.Enabled = true;
             } 
@@ -93,6 +109,10 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Enables or disables other input fields based on the provided boolean value
+        /// </summary>
+        /// <param name="enabled">A boolean value indicating whether to enable or disable the fields</param>
         private void SetOtherFieldsEnable(bool enabled)
         {
             
@@ -108,11 +128,19 @@ namespace GUI.GUI_STAFF
             txtEmail.Enabled = enabled;
         }
 
+        /// <summary>
+        /// Handles the TextChanged event for the txtTenNV TextBox. Throws an exception to indicate that a method or a block of code has not been implemented
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void TxtTenNV_TextChanged(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Initializes the form by clearing and setting up the data grid and date pickers, then loads employee data into the data grid.
+        /// </summary>
         private void onLoad()
         {
             dataNhanVien.Rows.Clear();
@@ -162,6 +190,10 @@ namespace GUI.GUI_STAFF
             dataNhanVien.ClearSelection();
         }
 
+        /// <summary>
+        /// Loads employee data from the provided DataTable into the data grid.
+        /// </summary>
+        /// <param name="dt">A DataTable containing employee data</param>
         private void onLoad(DataTable dt)
         {
             dataNhanVien.Rows.Clear();
@@ -197,12 +229,25 @@ namespace GUI.GUI_STAFF
             dataNhanVien.ClearSelection();
         }
 
+        /// <summary>
+        /// Handles the Load event of the StaffForm.
+        /// Disables the control box and clears any selection in the data grid.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void StaffForm_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
             dataNhanVien.ClearSelection();
         }
 
+        /// <summary>
+        /// Handles the Click event of the buttonRounded4 control.
+        /// Opens the frmAddStaff form to add a new staff member.
+        /// If the dialog result is OK, clears the data grid and refreshes the data.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void buttonRounded4_Click(object sender, EventArgs e)
         {
             var addStaff = new frmAddStaff();
@@ -214,6 +259,13 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnSearch control.
+        /// Gathers search criteria from the form fields and uses them to find matching employees.
+        /// Loads the search results into the data grid.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var manv = txtMaNV.Text;
@@ -231,6 +283,12 @@ namespace GUI.GUI_STAFF
             onLoad(dt);
         }
 
+        /// <summary>
+        /// Handles the KeyDown event of the StaffForm.
+        /// If the Enter key is pressed, triggers the search button click event and suppresses the key press.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">A KeyEventArgs that contains the event data</param>
         private void StaffForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -240,11 +298,20 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnReset control.
+        /// Calls the refresh method to reset the form to its initial state.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void btnReset_Click(object sender, EventArgs e)//*****
         {
             refresh();
         }
 
+        /// <summary>
+        /// Resets the form fields to their default values and reloads the data grid.
+        /// </summary>
         private void refresh()//*****
         {
             txtMaNV.Text = String.Empty;
@@ -272,26 +339,57 @@ namespace GUI.GUI_STAFF
             onLoad();
         }
 
+        /// <summary>
+        /// Handles the ValueChanged event of the dtpNgaySinhTu control.
+        /// Sets the custom date format to "dd/MM/yyyy" when the date value changes.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void dtpNgaySinhTu_ValueChanged(object sender, EventArgs e)
         {
             dtpNgaySinhTu.CustomFormat = "dd/MM/yyyy";
         }
 
+        /// <summary>
+        /// Handles the ValueChanged event of the dtpNgaySinhDen control.
+        /// Sets the custom date format to "dd/MM/yyyy" when the date value changes.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void dtpNgaySinhDen_ValueChanged(object sender, EventArgs e)
         {
             dtpNgaySinhDen.CustomFormat = "dd/MM/yyyy";
         }
 
+        /// <summary>
+        /// Handles the ValueChanged event of the dtpNgayVaoLamTu control.
+        /// Sets the custom date format to "dd/MM/yyyy" when the date value changes.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void dtpNgayVaoLamTu_ValueChanged(object sender, EventArgs e)
         {
             dtpNgayVaoLamTu.CustomFormat = "dd/MM/yyyy";
         }
 
+        /// <summary>
+        /// Handles the ValueChanged event of the dtpNgayVaoLamDen control.
+        /// Sets the custom date format to "dd/MM/yyyy" when the date value changes.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void dtpNgayVaoLamDen_ValueChanged(object sender, EventArgs e)
         {
             dtpNgayVaoLamDen.CustomFormat = "dd/MM/yyyy";
         }
 
+        /// <summary>
+        /// Handles the Click event of the buttonRounded1 control.
+        /// Prompts the user for confirmation to delete selected employees.
+        /// If confirmed, deletes the selected employees and shows a success message.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void buttonRounded1_Click(object sender, EventArgs e)
         {
             MessageBoxDialog message = new MessageBoxDialog();
@@ -306,6 +404,12 @@ namespace GUI.GUI_STAFF
             onLoad();
         }
 
+        /// <summary>
+        /// Handles the DoubleClick event of the dataNhanVien control.
+        /// Opens a form to edit the selected employee's details if exactly one row is selected.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void dataNhanVien_DoubleClick(object sender, EventArgs e)
         {
             if (dataNhanVien.SelectedRows.Count != 1) return;
@@ -344,6 +448,12 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the buttonRounded7 control.
+        /// Opens a form to edit the selected employee's details if exactly one row is selected.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void buttonRounded7_Click(object sender, EventArgs e)
         {
             if (dataNhanVien.SelectedRows.Count != 1) return;//*****
@@ -382,6 +492,12 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Handles the SelectionChanged event of the dataNhanVien control.
+        /// Enables or disables buttons based on the number of selected rows.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">An EventArgs that contains the event data</param>
         private void dataNhanVien_SelectionChanged(object sender, EventArgs e)//*****
         {
             if (dataNhanVien.SelectedRows.Count == 1)
@@ -395,6 +511,12 @@ namespace GUI.GUI_STAFF
                 buttonRounded1.Enabled = false;
         }
 
+        /// <summary>
+        /// Handles the KeyPress event of the cbNgayNghiPhep control.
+        /// Ensures that only valid numeric input is allowed in the cbNgayNghiPhep ComboBox.
+        /// </summary>
+        /// <param name="sender">The source of the event</param>
+        /// <param name="e">A KeyPressEventArgs that contains the event data</param>
         private void cbNgayNghiPhep_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (cbNgayNghiPhep.Text == String.Empty)
@@ -518,6 +640,11 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Handles the KeyPress event for the cbLuong1Ngay ComboBox to ensure only valid input is allowed.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">A KeyPressEventArgs that contains the event data.</param>
         private void cbLuong1Ngay_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (cbLuong1Ngay.Text == String.Empty)
@@ -641,6 +768,11 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Handles the MouseClick event for the cbLuong1Ngay ComboBox to remove commas from the text if no text is selected.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">A MouseEventArgs that contains the event data.</param>
         private void cbLuong1Ngay_MouseClick(object sender, MouseEventArgs e)
         {
             if (cbLuong1Ngay.SelectionLength == 0)
@@ -649,6 +781,11 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Handles the Leave event for the cbLuong1Ngay ComboBox to format the text with commas for thousands separators.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An EventArgs that contains the event data.</param>
         private void cbLuong1Ngay_Leave(object sender, EventArgs e)
         {
             var arr = cbLuong1Ngay.Text.Split(' ');
@@ -732,6 +869,11 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Handles the Leave event for the cbLuong1Ngay ComboBox to format the text with commas for thousands separators.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An EventArgs that contains the event data.</param>
         private void copyAlltoClipboard()
         {
             dataNhanVien.SelectAll();
@@ -740,6 +882,10 @@ namespace GUI.GUI_STAFF
                 Clipboard.SetDataObject(dataObj);
         }
 
+        /// <summary>
+        /// Releases a COM object to free up resources.
+        /// </summary>
+        /// <param name="obj">The COM object to be released.</param>
         private void releaseObject(object obj)
         {
             try
@@ -757,6 +903,11 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Handles the click event for the Import button to import employee data from an Excel file.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An EventArgs that contains the event data.</param>
         private void btnImport_Click(object sender, EventArgs e)
         {
             var message = new MessageBoxDialog();
@@ -782,6 +933,10 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        /// <summary>
+        /// Loads employee data from an Excel worksheet, checking for duplicate employee IDs both within the Excel file and against the database.
+        /// </summary>
+        /// <param name="sheet">The Excel worksheet containing the employee data.</param>
         private void loadDataNhanVien(Excel.Worksheet sheet)
         {
             var usedRange = sheet.UsedRange;
@@ -835,6 +990,12 @@ namespace GUI.GUI_STAFF
                 }
             }
         }
+
+        /// <summary>
+        /// Updates employee information based on data from an Excel worksheet row.
+        /// </summary>
+        /// <param name="row">The row number in the Excel worksheet.</param>
+        /// <param name="usedRange">The used range of the Excel worksheet.</param>
         public void checkAndUpdateNhanVien(int row, Excel.Range usedRange)
         {
             var manv = usedRange.Cells[row, 2].Value2.ToString().Trim();
@@ -960,6 +1121,12 @@ namespace GUI.GUI_STAFF
             nhanVienBUS.updateNhanVien(manv, tennv, gt, snp, cv, ns, nvl, email, l1n);
             refresh();
         }
+
+        /// <summary>
+        /// Adds a new employee to the database after validating the data from the Excel sheet.
+        /// </summary>
+        /// <param name="row">The row number in the Excel sheet.</param>
+        /// <param name="usedRange">The range of used cells in the Excel sheet.</param>
         public void checkAndAddNhanVien(int row, Excel.Range usedRange)
         {
             var tennv = usedRange.Cells[row, 3].Value2.ToString().Trim();
@@ -1086,6 +1253,13 @@ namespace GUI.GUI_STAFF
             nhanVienBUS.addNhanVien(manv, tennv, gt, snp, cv, ns, nvl, email, l1n);
             refresh();
         }
+
+        /// <summary>
+        /// Calculates the correct age of a person based on their birth date and the current date.
+        /// </summary>
+        /// <param name="birthDate">The birth date of the person.</param>
+        /// <param name="now">The current date.</param>
+        /// <returns>The calculated age as an integer.</returns>
         public int CalculateAgeCorrect(DateTime birthDate, DateTime now)
         {
             int age = now.Year - birthDate.Year;
@@ -1094,6 +1268,13 @@ namespace GUI.GUI_STAFF
                 age--;
             return age;
         }
+
+        /// <summary>
+        /// Generates a unique employee ID based on gender, date of joining, and the current count of employees.
+        /// </summary>
+        /// <param name="gioitinh">Gender of the employee (0 for male, 1 for female)</param>
+        /// <param name="ngayvaolam">Date of joining</param>
+        /// <returns>A unique employee ID string</returns>
         private string getMaNV(int gioitinh, DateTime ngayvaolam)
         {
             var NVCount = nhanVienBUS.getNhanVienCount();
@@ -1103,6 +1284,11 @@ namespace GUI.GUI_STAFF
             return "NV" + gioitinh + nvl + manv;
         }
 
+        /// <summary>
+        /// Handles the RowPrePaint event of the dataNhanVien DataGridView to alternate row colors for better readability.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">A DataGridViewRowPrePaintEventArgs that contains the event data.</param>
         private void dataNhanVien_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             for (int i = 0; i < dataNhanVien.Rows.Count; i++)

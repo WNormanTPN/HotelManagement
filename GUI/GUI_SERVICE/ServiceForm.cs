@@ -413,11 +413,6 @@ namespace GUI.GUI_SERVICE
             dtHinhAnh = "";
         }
 
-        private void cbogiadv_search_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
         private void txtgiaDV_KeyPress_2(object sender, KeyPressEventArgs e)
         {
 
@@ -490,7 +485,162 @@ namespace GUI.GUI_SERVICE
             cboloaidv_search.SelectedIndex = -1;
             cbogiadv_search.SelectedIndex = -1;
         }
-       
 
+        private void cbogiadv_search_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cbogiadv_search.Text == String.Empty)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            bool isSelectMany = false;
+            if (cbogiadv_search.SelectionLength > 0)
+            {
+                isSelectMany = true;
+            }
+
+            if (isSelectMany)
+            {
+                var selectedText = cbogiadv_search.SelectedText;
+                var selectStart = cbogiadv_search.SelectionStart;
+                var count = cbogiadv_search.SelectionLength;
+
+                if (int.TryParse(selectedText, out var _))
+                {
+                    if (char.IsDigit(e.KeyChar))
+                    {
+                        e.Handled = false;
+                        return;
+                    }
+                    else if (e.KeyChar == (char)Keys.Back)
+                    {
+                        if (selectStart == 0 || selectStart + count >= cbogiadv_search.Text.Length)
+                        {
+                            e.Handled = true;
+                            return;
+                        }
+                        if (int.TryParse(cbogiadv_search.Text[selectStart - 1].ToString(), out var _) || int.TryParse(cbogiadv_search.Text[selectStart + count].ToString(), out var _))
+                        {
+                            e.Handled = false;
+                            return;
+                        }
+                        else if (cbogiadv_search.Text[selectStart - 1] == ' ' && cbogiadv_search.Text[selectStart + count] == ' ')
+                        {
+                            e.Handled = true;
+                            cbogiadv_search.Text = cbogiadv_search.Text.Remove(selectStart, count);
+                            cbogiadv_search.Text = cbogiadv_search.Text.Insert(selectStart, "0");
+                            cbogiadv_search.SelectionStart = selectStart;
+                        }
+                        else
+                        {
+                            e.Handled = true;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                }
+                else
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+            else
+            {
+                var cursorPos = cbogiadv_search.SelectionStart;
+                if (char.IsDigit(e.KeyChar))
+                {
+                    if (cursorPos == 0)
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                    if (int.TryParse(cbogiadv_search.Text[cursorPos - 1].ToString(), out var _) || int.TryParse(cbogiadv_search.Text[cursorPos].ToString(), out var _))
+                    {
+                        e.Handled = false;
+                        return;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                }
+                else if (e.KeyChar == (char)Keys.Back)
+                {
+                    if (cursorPos < 2)
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                    if (int.TryParse(cbogiadv_search.Text[cursorPos - 1].ToString(), out var _) && int.TryParse(cbogiadv_search.Text[cursorPos - 2].ToString(), out var _))
+                    {
+                        e.Handled = false;
+                        return;
+                    }
+                    else if (int.TryParse(cbogiadv_search.Text[cursorPos - 1].ToString(), out var _) && int.TryParse(cbogiadv_search.Text[cursorPos].ToString(), out var _))
+                    {
+                        e.Handled = false;
+                        return;
+                    }
+                    else if (int.TryParse(cbogiadv_search.Text[cursorPos - 1].ToString(), out var _) && !int.TryParse(cbogiadv_search.Text[cursorPos].ToString(), out var _))
+                    {
+                        e.Handled = true;
+                        cbogiadv_search.Text = cbogiadv_search.Text.Remove(cursorPos - 1, 1);
+                        cbogiadv_search.Text = cbogiadv_search.Text.Insert(cursorPos - 1, "0");
+                        cbogiadv_search.SelectionStart = cursorPos;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                }
+                else
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+        }
+
+        private void cbogiadv_search_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (cbogiadv_search.SelectionLength == 0)
+            {
+                cbogiadv_search.Text = cbogiadv_search.Text.Replace(",", "");
+            }
+        }
+
+        private void cbogiadv_search_Leave(object sender, EventArgs e)
+        {
+            var arr = cbogiadv_search.Text.Split(' ');
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (int.TryParse(arr[i], out var _))
+                {
+                    int dem = 0;
+                    for (int j = arr[i].Length - 1; j > 0; j--)
+                    {
+                        dem++;
+                        if (dem % 3 == 0)
+                        {
+                            arr[i] = arr[i].Insert(j, ",");
+                        }
+                    }
+                }
+            }
+            cbogiadv_search.Text = String.Empty;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                cbogiadv_search.Text += arr[i] + " ";
+            }
+            cbogiadv_search.Text.Remove(cbogiadv_search.Text.Length - 1);
+        }
     }
 }

@@ -1035,7 +1035,9 @@
             this.cbGiaP.Name = "cbGiaP";
             this.cbGiaP.Size = new System.Drawing.Size(167, 31);
             this.cbGiaP.TabIndex = 1;
-            this.cbGiaP.TextChanged += new System.EventHandler(this.otherTextChanged);
+            this.cbGiaP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGiaP_KeyPress);
+            this.cbGiaP.Leave += new System.EventHandler(this.cbGiaP_Leave);
+            this.cbGiaP.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbGiaP_MouseClick);
             // 
             // label7
             // 

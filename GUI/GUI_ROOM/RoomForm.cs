@@ -450,35 +450,161 @@ namespace GUI.GUI_ROOM
             }
         }
 
-        private void txtMaP_TextChanged(object sender, EventArgs e)
+        private void cbGiaP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            bool isMaPEmpty = string.IsNullOrWhiteSpace(txtMaP.Text);
-            txtTenP.Enabled = isMaPEmpty;
-            cbLoaiP.Enabled = isMaPEmpty;
-            cbCTLP.Enabled = isMaPEmpty;
-            cbGiaP.Enabled = isMaPEmpty;
-            cbTinhTrang.Enabled = isMaPEmpty;
-            cbHienTrang.Enabled = isMaPEmpty;
-
-        }
-
-        private void otherTextChanged(object sender, EventArgs e)
-        {
-            bool isTenPEmpty = string.IsNullOrEmpty(txtTenP.Text);
-            if (isTenPEmpty == true &&
-                cbCTLP.Text == String.Empty &&
-                cbGiaP.Text == String.Empty &&
-                cbLoaiP.Text == String.Empty &&
-                cbHienTrang.Text == String.Empty &&
-                cbTinhTrang.Text == String.Empty)
+            if (cbGiaP.Text == String.Empty)
             {
-                txtMaP.Enabled = true;
+                e.Handled = true;
+                return;
+            }
+
+            bool isSelectMany = false;
+            if (cbGiaP.SelectionLength > 0)
+            {
+                isSelectMany = true;
+            }
+
+            if (isSelectMany)
+            {
+                var selectedText = cbGiaP.SelectedText;
+                var selectStart = cbGiaP.SelectionStart;
+                var count = cbGiaP.SelectionLength;
+
+                if (int.TryParse(selectedText, out var _))
+                {
+                    if (char.IsDigit(e.KeyChar))
+                    {
+                        e.Handled = false;
+                        return;
+                    }
+                    else if (e.KeyChar == (char)Keys.Back)
+                    {
+                        if (selectStart == 0 || selectStart + count >= cbGiaP.Text.Length)
+                        {
+                            e.Handled = true;
+                            return;
+                        }
+                        if (int.TryParse(cbGiaP.Text[selectStart - 1].ToString(), out var _) || int.TryParse(cbGiaP.Text[selectStart + count].ToString(), out var _))
+                        {
+                            e.Handled = false;
+                            return;
+                        }
+                        else if (cbGiaP.Text[selectStart - 1] == ' ' && cbGiaP.Text[selectStart + count] == ' ')
+                        {
+                            e.Handled = true;
+                            cbGiaP.Text = cbGiaP.Text.Remove(selectStart, count);
+                            cbGiaP.Text = cbGiaP.Text.Insert(selectStart, "0");
+                            cbGiaP.SelectionStart = selectStart;
+                        }
+                        else
+                        {
+                            e.Handled = true;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                }
+                else
+                {
+                    e.Handled = true;
+                    return;
+                }
             }
             else
             {
-                txtMaP.Enabled = false;
+                var cursorPos = cbGiaP.SelectionStart;
+                if (char.IsDigit(e.KeyChar))
+                {
+                    if (cursorPos == 0)
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                    if (int.TryParse(cbGiaP.Text[cursorPos - 1].ToString(), out var _) || int.TryParse(cbGiaP.Text[cursorPos].ToString(), out var _))
+                    {
+                        e.Handled = false;
+                        return;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                }
+                else if (e.KeyChar == (char)Keys.Back)
+                {
+                    if (cursorPos < 2)
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                    if (int.TryParse(cbGiaP.Text[cursorPos - 1].ToString(), out var _) && int.TryParse(cbGiaP.Text[cursorPos - 2].ToString(), out var _))
+                    {
+                        e.Handled = false;
+                        return;
+                    }
+                    else if (int.TryParse(cbGiaP.Text[cursorPos - 1].ToString(), out var _) && int.TryParse(cbGiaP.Text[cursorPos].ToString(), out var _))
+                    {
+                        e.Handled = false;
+                        return;
+                    }
+                    else if (int.TryParse(cbGiaP.Text[cursorPos - 1].ToString(), out var _) && !int.TryParse(cbGiaP.Text[cursorPos].ToString(), out var _))
+                    {
+                        e.Handled = true;
+                        cbGiaP.Text = cbGiaP.Text.Remove(cursorPos - 1, 1);
+                        cbGiaP.Text = cbGiaP.Text.Insert(cursorPos - 1, "0");
+                        cbGiaP.SelectionStart = cursorPos;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                }
+                else
+                {
+                    e.Handled = true;
+                    return;
+                }
             }
         }
-    
+
+        private void cbGiaP_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (cbGiaP.SelectionLength == 0)
+            {
+                cbGiaP.Text = cbGiaP.Text.Replace(",", "");
+            }
+        }
+
+        private void cbGiaP_Leave(object sender, EventArgs e)
+        {
+            var arr = cbGiaP.Text.Split(' ');
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (int.TryParse(arr[i], out var _))
+                {
+                    int dem = 0;
+                    for (int j = arr[i].Length - 1; j > 0; j--)
+                    {
+                        dem++;
+                        if (dem % 3 == 0)
+                        {
+                            arr[i] = arr[i].Insert(j, ",");
+                        }
+                    }
+                }
+            }
+            cbGiaP.Text = String.Empty;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                cbGiaP.Text += arr[i] + " ";
+            }
+            cbGiaP.Text.Remove(cbGiaP.Text.Length - 1);
+        }
     }
 }

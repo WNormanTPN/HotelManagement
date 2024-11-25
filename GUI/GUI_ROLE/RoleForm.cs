@@ -172,10 +172,19 @@ namespace GUI.GUI_ROLE
             if(tbAccount.SelectedRows.Count > 0)
             {
                 TaiKhoanBUS tk = new TaiKhoanBUS();
-                tk.KhoaTaiKhoan(tbAccount.SelectedRows[0].Cells[3].Value.ToString());
-                MessageBoxDialog messageSuccess = new MessageBoxDialog();
-                messageSuccess.ShowDialog("Thông báo", "Thành công", "Khóa tài khoản này thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "Đóng", "", "");
-                HienThiAccount("");
+                var tenTK = tbAccount.SelectedRows[0].Cells[3].Value.ToString();
+                if (!tenTK.Equals("Chưa có"))
+                {
+                    tk.KhoaTaiKhoan(tenTK);
+                    MessageBoxDialog messageSuccess = new MessageBoxDialog();
+                    messageSuccess.ShowDialog("Thông báo", "Thành công", "Khóa tài khoản này thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "Đóng", "", "");
+                    HienThiAccount("");
+                }
+                else
+                {
+                    MessageBoxDialog messageSuccess = new MessageBoxDialog();
+                    messageSuccess.ShowDialog("Thông báo", "Thất bại", "Chưa có tài khoản, không thể khóa", MessageBoxDialog.ERROR, MessageBoxDialog.YES, "Đóng", "", "");
+                }
             }
             tbAccount.ClearSelection();
         }

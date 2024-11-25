@@ -137,7 +137,9 @@ namespace GUI
                         }
                         else
                         {
-                            string pass = GetHash(txtPassOld.Text);
+                            string pass = txtPassOld.Text;
+                            MessageBoxDialog a = new MessageBoxDialog();
+                            a.ShowDialog("Thông báo", "Thông báo", pass + " " + it.matKhau, MessageBoxDialog.ERROR, MessageBoxDialog.YES, "Đóng", "", "");
                             if (pass.Equals(it.matKhau))
                             {
                                 if(txtPassNew.Text.Equals(txtPassOld.Text))

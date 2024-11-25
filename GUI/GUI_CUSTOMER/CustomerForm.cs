@@ -27,10 +27,12 @@ namespace GUI.GUI_CUSTOMER
         {
             InitializeComponent();
             onLoad();
+            UpdateSearchFieldsDisplay();
         }
 
         private void onLoad()
         {
+           
             dataKhachHang.Rows.Clear();
             dtpNgaySinhTu.Checked = false;
             dtpNgaySinhTu.CustomFormat = " ";
@@ -117,21 +119,10 @@ namespace GUI.GUI_CUSTOMER
         {
             dtpNgaySinhDen.CustomFormat = "dd/MM/yyyy";
         }
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            var makh = txtMaKH.Text;
-            var tenkh = txtTenKH.Text;
-            var gioitinh = cbGioiTinh.SelectedIndex;
-            var cmnd = txtCMND.Text;
-            var sdt = txtSDT.Text;
-            var quequan = txtQueQuan.Text;
-            var quoctich = txtQuocTich.Text;
-            var ngaysinhtu = (dtpNgaySinhTu.CustomFormat.ToString().Length == 1) ? DateTime.MinValue : dtpNgaySinhTu.Value;
-            var ngaysinhden = (dtpNgaySinhDen.CustomFormat.ToString().Length == 1) ? DateTime.MinValue : dtpNgaySinhDen.Value;
+        
 
-            var dt = khachHangBUS.findKhachHang(makh, tenkh, cmnd, gioitinh, sdt, quequan, quoctich, ngaysinhtu, ngaysinhden);
-            onLoad(dt);
-        }
+        
+
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -150,63 +141,7 @@ namespace GUI.GUI_CUSTOMER
             onLoad();
         }
 
-        private void buttonRounded2_Click(object sender, EventArgs e)
-        {
-            {
-                var message = new MessageBoxDialog();
-                var result = message.ShowDialog("Thông báo", "Xuất file", "Bạn có muốn xuất file Excel không?", MessageBoxDialog.INFO, MessageBoxDialog.YES_NO, "Có", "Không", "");
-                if (result == MessageBoxDialog.YES)
-                {
-                    SaveFileDialog sfd = new SaveFileDialog();
-                    sfd.Filter = "Excel Documents (*.xls)|*.xls";
-                    sfd.FileName = "Inventory_Adjustment_Export.xls";
-                    if (sfd.ShowDialog() == DialogResult.OK)
-                    {
-                        // Copy DataGridView results to clipboard
-                        copyAlltoClipboard();
-
-                        object misValue = System.Reflection.Missing.Value;
-                        Excel.Application xlexcel = new Excel.Application();
-                        xlexcel.DisplayAlerts = false; // Without this you will get two confirm overwrite prompts
-                        Excel.Workbook xlWorkBook = xlexcel.Workbooks.Add(misValue);
-                        Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-                        // Format column D as text before pasting results, this was required for my data
-                        Excel.Range rng = xlWorkSheet.get_Range("D:D").Cells;
-                        rng.NumberFormat = "@";
-
-                        // Paste clipboard results to worksheet range
-                        Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
-                        CR.Select();
-                        xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
-
-                        // For some reason column A is always blank in the worksheet. ¯\_(ツ)_/¯
-                        // Delete blank column A and select cell A1
-                        Excel.Range delRng = xlWorkSheet.get_Range("A:A").Cells;
-                        delRng.Delete(Type.Missing);
-                        xlWorkSheet.get_Range("A1").Select();
-
-                        // Save the excel file under the captured location from the SaveFileDialog
-                        xlWorkBook.SaveAs(sfd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                        xlexcel.DisplayAlerts = true;
-                        xlWorkBook.Close(true, misValue, misValue);
-                        xlexcel.Quit();
-
-                        releaseObject(xlWorkSheet);
-                        releaseObject(xlWorkBook);
-                        releaseObject(xlexcel);
-
-                        // Clear Clipboard and DataGridView selection
-                        Clipboard.Clear();
-                        dataKhachHang.ClearSelection();
-
-                        // Open the newly saved excel file
-                        if (File.Exists(sfd.FileName))
-                            System.Diagnostics.Process.Start(sfd.FileName);
-                    }
-                }
-            }
-        }
+       
 
         private void copyAlltoClipboard()
         {
@@ -264,5 +199,100 @@ namespace GUI.GUI_CUSTOMER
                 }
             }
         }
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (button1.Text == "Tìm kiếm theo mã")
+            {
+                // Nếu tìm kiếm theo mã, chỉ hiển thị trường mã và thực hiện tìm kiếm theo mã khách hàng
+                var makh = txtMaKH.Text;
+
+                // Gọi phương thức tìm kiếm theo mã khách hàng
+                var dt = khachHangBUS.findKhachHang(makh, null, null, -1, null, null, null, DateTime.MinValue, DateTime.MinValue);
+
+                // Cập nhật dữ liệu lên giao diện
+                onLoad(dt);
+            }
+            else
+            {
+                // Nếu tìm kiếm theo các tiêu chí khác, hiển thị các trường tìm kiếm khác
+                var tenkh = txtTenKH.Text;
+                var gioitinh = cbGioiTinh.SelectedIndex;
+                var cmnd = txtCMND.Text;
+                var sdt = txtSDT.Text;
+                var quequan = txtQueQuan.Text;
+                var quoctich = txtQuocTich.Text;
+                var ngaysinhtu = (dtpNgaySinhTu.CustomFormat.ToString().Length == 1) ? DateTime.MinValue : dtpNgaySinhTu.Value;
+                var ngaysinhden = (dtpNgaySinhDen.CustomFormat.ToString().Length == 1) ? DateTime.MinValue : dtpNgaySinhDen.Value;
+
+                // Gọi phương thức tìm kiếm với các tiêu chí khác
+                var dt = khachHangBUS.findKhachHang(null, tenkh, cmnd, gioitinh, sdt, quequan, quoctich, ngaysinhtu, ngaysinhden);
+
+                // Cập nhật dữ liệu lên giao diện
+                onLoad(dt);
+            }
+        }
+
+
+
+        private void UpdateSearchFieldsDisplay()
+        {
+            if (button1.Text == "Tìm kiếm theo mã")
+            {
+                ShowSearchByIdField();  // Hiển thị trường mã khách hàng
+            }
+            else
+            {
+                ShowOtherSearchFields();  // Hiển thị các trường tìm kiếm khác
+            }
+        }
+
+        // Sự kiện khi nút chuyển đổi tìm kiếm được nhấn
+        private void BtnSearch_change(object sender, EventArgs e)
+        {
+            if (button1.Text == "Tìm kiếm theo mã")
+            {
+                button1.Text = "Tìm kiếm khác";
+            }
+            else
+            {
+                button1.Text = "Tìm kiếm theo mã";
+            }
+            btnReset_Click(sender, e);
+            UpdateSearchFieldsDisplay();  // Cập nhật hiển thị dựa trên nội dung nút
+        }
+
+        // Reset các trường tìm kiếm
+       
+
+        // Hiển thị trường mã khách hàng, ẩn các trường khác
+        private void ShowSearchByIdField()
+        {
+            panel4.Enabled = true;  // Mã khách hàng
+            panel6.Enabled = false;
+            panel3.Enabled = false;
+            panel7.Enabled = false;
+            panel8.Enabled = false;
+            panel13.Enabled = false;
+            panel10.Enabled = false;
+            panel12.Enabled = false;
+            panel11.Enabled = false;
+        }
+
+        // Hiển thị các trường tìm kiếm khác, ẩn trường mã khách hàng
+        private void ShowOtherSearchFields()
+        {
+            panel4.Enabled = false; // Ẩn trường mã khách hàng
+            panel6.Enabled = true;
+            panel3.Enabled = true;
+            panel7.Enabled = true;
+            panel8.Enabled = true;
+            panel13.Enabled = true;
+            panel10.Enabled = true;
+            panel12.Enabled = true;
+            panel11.Enabled = true;
+        }
+
     }
 }

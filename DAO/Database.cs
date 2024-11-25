@@ -12,37 +12,26 @@ namespace DAO
     public class Database
     {
         SqlConnection conn;
-        // Để điền dữ liệu vào DataSet
         SqlDataAdapter da;
-        // Tập hợp dữ liệu
         DataSet ds;
-
-
-        public string serverName = @"iris523.database.windows.net";
+        public string serverName = @"NORMAN";
         public string dbName = "QLKS";
-        public string userName = "nhom8";
-        public string password = "Gohomeafter10pm";
         public Database()
         {
-            string stringConnect = "Server=" + serverName + "; Database=" + dbName + "; User Id=" + userName + "; Password=" + password + ";"; 
+            string stringConnect = "Data source=" + serverName + ";Database=" + dbName + ";Integrated Security=True";
             conn = new SqlConnection(stringConnect);
         }
 
-        // Thực hiện truy vấn SQL và trả về kết quả dưới dạng DataTable 
         public DataTable getList(string query)
         {
-            // Sử dụng SqlDataAdepter để điền dữ liệu và DataSet
             da = new SqlDataAdapter(query, conn);
             ds = new DataSet();
             da.Fill(ds);
-            // Trả về bảng đầu tiên trong DataSet 
             return ds.Tables[0];
         }
 
-        // Thực hiên truy vấn SQL không trả về kết quả (INSERT, UPDATE, DELETE)
         public void ExecuteNonQuery(string query)
         {
-            // Mở kết nổi, thực hiện truy vấn và đóng kết nối
             SqlCommand cmd = new SqlCommand(query, conn);
             conn.Open();
             cmd.ExecuteNonQuery();

@@ -110,7 +110,7 @@ namespace GUI
                         }
                         else
                         {
-                            string pass = txtPass.Text;
+                            string pass = GetHash(txtPass.Text);
                             if (pass.Equals(it.matKhau))
                             {
                                 this.Hide();
@@ -130,7 +130,7 @@ namespace GUI
                             else
                             {
                                 MessageBoxDialog message = new MessageBoxDialog();
-                                message.ShowDialog("Thông báo", "Thông báo", "Sai mật khẩu " + it.matKhau, MessageBoxDialog.ERROR, MessageBoxDialog.YES, "Đóng", "", "");
+                                message.ShowDialog("Thông báo", "Thông báo", "Sai mật khẩu", MessageBoxDialog.ERROR, MessageBoxDialog.YES, "Đóng", "", "");
                                 txtTK.Focus();
                                 return;
                             }

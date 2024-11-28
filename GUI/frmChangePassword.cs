@@ -137,9 +137,7 @@ namespace GUI
                         }
                         else
                         {
-                            string pass = txtPassOld.Text;
-                            MessageBoxDialog a = new MessageBoxDialog();
-                            a.ShowDialog("Thông báo", "Thông báo", pass + " " + it.matKhau, MessageBoxDialog.ERROR, MessageBoxDialog.YES, "Đóng", "", "");
+                            string pass = GetHash(txtPassOld.Text);
                             if (pass.Equals(it.matKhau))
                             {
                                 if(txtPassNew.Text.Equals(txtPassOld.Text))
@@ -191,7 +189,7 @@ namespace GUI
                 return;
             }
         }
-        public string GetHash(string matKhau)
+        public static string GetHash(string matKhau)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
             md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(matKhau));

@@ -123,7 +123,7 @@ namespace GUI
                 }
                 TaiKhoanBUS tkBUS = new TaiKhoanBUS();
                 TaiKhoanDTO tkDTO = tkBUS.GetTK(txtTK.Text);
-                tkBUS.SuaMatKhau(tkDTO.TaiKhoan, txtMKMoi.Text);
+                tkBUS.SuaMatKhau(tkDTO.TaiKhoan, frmChangePassword.GetHash(txtMKMoi.Text));
                 MessageBoxDialog message1 = new MessageBoxDialog();
                 message1.ShowDialog("Thành công", "", "Đổi mật khẩu thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "OK", "", "");
 

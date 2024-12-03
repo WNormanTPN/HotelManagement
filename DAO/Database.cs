@@ -14,11 +14,13 @@ namespace DAO
         SqlConnection conn;
         SqlDataAdapter da;
         DataSet ds;
-        public string serverName = @"NORMAN";
+        public string serverName = @"nhom-8.database.windows.net";
         public string dbName = "QLKS";
+        public string userName = "Nhom8";
+        public string password = "Gohomeafter10pm";
         public Database()
         {
-            string stringConnect = "Data source=" + serverName + ";Database=" + dbName + ";Integrated Security=True";
+            string stringConnect = "Server=" + serverName + "; Database=" + dbName + "; User Id=" + userName + "; Password=" + password + ";"; 
             conn = new SqlConnection(stringConnect);
         }
 

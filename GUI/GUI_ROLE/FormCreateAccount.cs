@@ -77,7 +77,7 @@ namespace GUI.GUI_ROLE
                 TaiKhoanBUS taiKhoan = new TaiKhoanBUS();
                 try
                 {
-                    taiKhoan.ThemTaiKhoan(textBox1.Text.Trim(), maNV, comboBox1.SelectedValue.ToString(), nhanVien.NgaySinh.ToString("ddMMyyyy"), "0");
+                    taiKhoan.ThemTaiKhoan(textBox1.Text.Trim(), maNV, comboBox1.SelectedValue.ToString(), frmChangePassword.GetHash(nhanVien.NgaySinh.ToString("ddMMyyyy")), "0");
                     this.DialogResult = DialogResult.Yes;
                 }
                 catch(Exception)

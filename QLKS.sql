@@ -322,7 +322,7 @@ INSERT [dbo].[PHONG] ([maP], [tenP], [loaiP], [giaP], [chiTietLoaiP], [tinhTrang
 GO
 INSERT [dbo].[PHONG] ([maP], [tenP], [loaiP], [giaP], [chiTietLoaiP], [tinhTrang], [hienTrang], [xuLy]) VALUES (N'P1404240003', N'Phòng Gia Đình', 0, 300000, 2, 0, 0, 0)
 GO
-INSERT [dbo].[TAIKHOAN] ([taiKhoan], [maNV], [matKhau], [tinhTrang], [maPQ], [xuLy]) VALUES (N'admin', N'NV01711230001', N'123456', 0, N'0', 0)
+INSERT [dbo].[TAIKHOAN] ([taiKhoan], [maNV], [matKhau], [tinhTrang], [maPQ], [xuLy]) VALUES (N'admin', N'NV01711230001', N'e10adc3949ba59abbe56e057f20f883e', 0, N'0', 0)
 GO
 INSERT [dbo].[TIENICH] ([maTI], [tenTI], [xuLy]) VALUES (N'TI0804240003', N'Ghế tình yêu', 1)
 GO

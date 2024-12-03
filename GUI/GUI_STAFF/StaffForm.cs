@@ -834,13 +834,16 @@ namespace GUI.GUI_STAFF
                     Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
                     // Format column D as text before pasting results, this was required for my data
-                    Excel.Range rng = xlWorkSheet.get_Range("D:D").Cells;
+                    //Excel.Range rng = xlWorkSheet.get_Range("C:C").Cells;
+                    Excel.Range rng = xlWorkSheet.Columns;
                     rng.NumberFormat = "@";
 
                     // Paste clipboard results to worksheet range
-                    Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+                    Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 2];
                     CR.Select();
                     xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+
+                    xlWorkSheet.Columns.AutoFit();
 
                     // For some reason column A is always blank in the worksheet. ¯\_(ツ)_/¯
                     // Delete blank column A and select cell A1
@@ -876,6 +879,7 @@ namespace GUI.GUI_STAFF
         /// <param name="e">An EventArgs that contains the event data.</param>
         private void copyAlltoClipboard()
         {
+
             dataNhanVien.SelectAll();
             DataObject dataObj = dataNhanVien.GetClipboardContent();
             if (dataObj != null)
@@ -969,7 +973,7 @@ namespace GUI.GUI_STAFF
                     {
                         isDuplicate = true;
                         var message = new MessageBoxDialog();
-                        var result = message.ShowDialog("Thông báo", "Trùng mã nhân viên", "Trong file có mã nhân viên " + nvRow["MaNV"] + " trùng với mã nhân viên sẵn có, bạn hãy chọn cách xử lý", MessageBoxDialog.WARNING, MessageBoxDialog.YES_NO_CANCEL, "Keep old", "Keep current", "Add current like new");
+                        var result = message.ShowDialog("Thông báo", "Trùng mã nhân viên", "Trong file có mã nhân viên " + nvRow["MaNV"] + " trùng với mã nhân viên sẵn có, bạn hãy chọn cách xử lý", MessageBoxDialog.WARNING, MessageBoxDialog.YES_NO_CANCEL, "Keep old", "Keep current", "Add current");
                         if (result == MessageBoxDialog.YES)
                         {
                             continue;
